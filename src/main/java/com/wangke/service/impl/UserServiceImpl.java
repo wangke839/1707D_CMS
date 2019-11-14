@@ -1,4 +1,4 @@
-package com.wangke.service;
+package com.wangke.service.impl;
 
 import java.util.List;
 
@@ -10,6 +10,7 @@ import com.github.pagehelper.PageInfo;
 import com.wangke.bean.User;
 import com.wangke.comm.CONTAINT;
 import com.wangke.mapper.UserMapper;
+import com.wangke.service.UserServicde;
 
 @Service
 public class UserServiceImpl implements UserServicde{

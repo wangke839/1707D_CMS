@@ -20,14 +20,19 @@ public class AmdinController {
 	private UserServicde us;
 	@RequestMapping("list.do")
 	public String list(){
-		return "index";
+		return "admin/index";
 	}
 	@RequestMapping("users")
 	public String users(Model m,@RequestParam(defaultValue="1")Integer pageSize,String mohu){
 		PageInfo info  = us.showUsers(pageSize,mohu);
 		m.addAttribute("info", info);
 		m.addAttribute("mohu", mohu);
-		return "list";
+		return "admin/list";
+	}
+	@RequestMapping("index")
+	public String index(Model m){
+		
+		return "admin/index2";
 	}
 	/**
 	 * 

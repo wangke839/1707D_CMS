@@ -9,12 +9,17 @@
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/resource/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="/resource/bootstrap/css/bootstrap.min.css">
 <script type="text/javascript" src="/resource/js/jquery-3.2.1.js"></script>
 <script type="text/javascript" src="/resource/bootstrap/js/bootstrap.js"></script>
 
 <link rel="stylesheet" href="/resource/assets/css/ace-fonts.css" />
 <link rel="stylesheet" href="/resource/assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
 <script src="/resource/assets/js/ace-extra.js"></script>
+
+<!-- 轮播图 -->
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<div id="navbar" class="navbar navbar-default">
@@ -40,7 +45,7 @@
 					<a href="#" class="navbar-brand">
 						<small>
 							<i class="fa fa-leaf"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-							王牌管理员
+							CMS——made by ke 
 						</font></font></small>
 					</a>
 
@@ -51,7 +56,7 @@
 					<!-- /section:basics/navbar.toggle -->
 				</div>
 
-				<!-- #section:basics/navbar.dropdown -->
+				<!-- #section:basics/navbar.dropdown -->&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 				<div class="navbar-buttons navbar-header pull-right" role="navigation">
 					<ul class="nav ace-nav" style="">
 						<li class="grey">
@@ -215,7 +220,6 @@
 									<ul class="dropdown-menu dropdown-navbar">
 										<li>
 											<a href="#" class="clearfix">
-												<img src="../assets/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar">
 												<span class="msg-body">
 													<span class="msg-title">
 														<span class="blue"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">亚历克斯（Alex）：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
@@ -325,14 +329,14 @@
 								<li>
 									<a href="#">
 										<i class="ace-icon fa fa-cog"></i>
-										Settings
+										设置
 									</a>
 								</li>
 
 								<li>
 									<a href="profile.html">
 										<i class="ace-icon fa fa-user"></i>
-										Profile
+										详情
 									</a>
 								</li>
 
@@ -341,7 +345,7 @@
 								<li>
 									<a href="#">
 										<i class="ace-icon fa fa-power-off"></i>
-										Logout
+										登出
 									</a>
 								</li>
 							</ul>
@@ -371,9 +375,9 @@
 
 				<ul class="nav nav-list" style="top: 0px;">
 					<li class="">
-						<a href="index.html">
+						<a href="javascript:showFuction('/admin/index')">
 							<i class="menu-icon fa fa-tachometer"></i>
-							<span class="menu-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 仪表板 </font></font></span>
+							<span class="menu-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首页</font></font></span>
 						</a>
 
 					</li>
@@ -507,7 +511,7 @@
 					</div>
 
 					<!-- /section:basics/content.breadcrumbs -->
-					<div class="page-content">
+					<div class="page-content" id="a">
 					
 					</div>
 			</div>

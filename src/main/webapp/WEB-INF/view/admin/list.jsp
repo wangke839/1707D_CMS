@@ -3,25 +3,27 @@
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <script type="text/javascript">
-<!--
+	function updateStatus(userId,status){
+		$.post(
+				"/admin/lockuser.do",
+				{userId:userId,status:status},
+				function(data){
+					if(data.result==1){
+						alert("恭喜，处理成功！");
+						$("#a").load("/admin/users")
+					}else{
+						alert(data.errorMsg);
+					}
+				},
+				"json"
+		)	
+	}
 	
-//-->
-function updateStatus(userId,status){
-	$.post(
-			"/admin/lockuser.do",
-			{userId:userId,status:status},
-			function(data){
-				if(data.result==1){
-					alert("恭喜，处理成功！");
-					$(".page-content").load("/admin/users");
-				}else{
-					alert(data.errorMsg);
-				}
-			},
-			"json"
-	)	
-}
-
+	function search(){
+		var mohu = $(".form-control").val();
+		$("#a").load("/admin/users?mohu="+mohu);
+	}
+	
 </script>
   
 	
@@ -34,9 +36,9 @@ function updateStatus(userId,status){
     <div>
         <form class="navbar-form navbar-left" role="search">
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
+                <input type="text" value="${mohu }" class="form-control" placeholder="Search">
             </div>
-            <input type="button" class="btn btn-default" value="查询"/>
+            <input type="button" class="btn btn-default" value="查询" onclick="search()"/>
         </form>
     </div>
     </div>
@@ -101,11 +103,25 @@ function updateStatus(userId,status){
 </div>
 
 <ul class="pagination">
-    <li><a href="#">&laquo;</a></li>&emsp;
-    <li><a href="javascript:showFuction('/admin/users?pageSize=1')">1</a></li>&emsp;
+    <li><a href="javascript:changePage(${info.prePage})">&laquo;</a></li>&emsp;
+    <c:forEach begin="${info.pageNum - 2 > 1 ? info.pageNum-2:1}" end="${info.pageNum+2 > info.pages ? info.pages:info.pageNum+2}" varStatus="index">
+    	
+    	<c:if test="${info.pageNum!=index.index}">
+    		<li><a href="javascript:changePage(${index.index})">${index.index}</a></li>&emsp;
+    	</c:if>
+    	<c:if test="${info.pageNum==index.index}">
+    		<li><a href="javascript:void"><strong> ${index.index} </strong> </a></li>&emsp;
+    	</c:if>
+    </c:forEach>
+    <!-- <li><a href="javascript:showFuction('/admin/users?pageSize=1')">1</a></li>&emsp;
     <li><a href="javascript:showFuction('/admin/users?pageSize=2')">2</a></li>&emsp;
     <li><a href="javascript:showFuction('/admin/users?pageSize=3')">3</a></li>&emsp;
     <li><a href="javascript:showFuction('/admin/users?pageSize=4')">4</a></li>&emsp;
-    <li><a href="javascript:showFuction('/admin/users?pageSize=5')">5</a></li>&emsp;
-    <li><a href="#">&raquo;</a></li>&emsp;
+    <li><a href="javascript:showFuction('/admin/users?pageSize=5')">5</a></li>&emsp; -->
+    <li><a href="javascript:changePage(${info.nextPage})">&raquo;</a></li>&emsp;
 </ul>
+<script>
+	function changePage(a){
+		$(".page-content").load("/admin/users?pageSize="+a+"&mohu=${mohu}");
+	}
+</script>
