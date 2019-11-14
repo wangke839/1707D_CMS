@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -53,7 +55,7 @@
 					<!-- /section:basics/navbar.toggle -->
 				</div>
 
-				<!-- #section:basics/navbar.dropdown -->&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+				<!-- #section:basics/navbar.dropdown -->&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 				<div class="navbar-buttons navbar-header pull-right" role="navigation">
 					<ul class="nav ace-nav" style="">
 						<li class="grey">
@@ -360,126 +362,14 @@
 		
 		
 		
-		<div id="sidebar" class="sidebar responsive" data-sidebar="true" data-sidebar-scroll="true" data-sidebar-hover="true" style="height: 660px;top: 70px">
-
-				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
-					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-					</div>
-
-					<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
-					</div>
-				</div><!-- /.sidebar-shortcuts -->
-
-				<ul class="nav nav-list" style="top: 0px;">
-					<li class="">
-						<a href="javascript:showFuction('/admin/index')">
-							<i class="menu-icon fa fa-tachometer"></i>
-							<span class="menu-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">首页</font></font></span>
-						</a>
-
-					</li>
-
-					<li class="">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-desktop"></i>
-							<span class="menu-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-								用户界面和元素
-							</font></font></span>
-
-						</a>
-
-
-					</li>
-
-					<li class="">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-list"></i>
-							<span class="menu-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 桌子&emsp;&emsp; </font></font></span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-					</li>
-
-					<li class="">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-pencil-square-o"></i>
-							<span class="menu-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 形式&emsp;&emsp; </font></font></span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-					</li>
-
-					<li class="">
-						<a href="widgets.html">
-							<i class="menu-icon fa fa-list-alt"></i>
-							<span class="menu-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 小部件&emsp;&emsp; </font></font></span>
-						</a>
-
-					</li>
-
-					<li class="">
-						<a href="calendar.html">
-							<i class="menu-icon fa fa-calendar"></i>
-
-							<span class="menu-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-								日历&emsp;&emsp;&emsp;&emsp;
-
-								</font></font><!-- #section:basics/sidebar.layout.badge -->
-								<span class="badge badge-transparent tooltip-error" title="" data-original-title="2 Important Events">
-									<i class="ace-icon fa fa-exclamation-triangle red bigger-130"></i>
-								</span>
-
-								<!-- /section:basics/sidebar.layout.badge -->
-							</span>
-						</a>
-					</li>
-
-					<li class="">
-						<a href="gallery.html">
-							<i class="menu-icon fa fa-picture-o"></i>
-							<span class="menu-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 画廊&emsp;&emsp;</font></font></span>
-						</a>
-
-					</li>
-
-					<li class="">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-tag"></i>
-							<span class="menu-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 更多页面 </font></font></span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-					</li>
-
-					<li class="active open">
-						<!-- 用户管理a标签 -->
-						<a href="javascript:showFuction('/admin/users')" class="dropdown-toggle">
-							<i class="menu-icon fa fa-file-o"></i>
-
-							<span class="menu-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-								用户管理
-
-								 </font></font>
-
-								<!-- /section:basics/sidebar.layout.badge -->
-							</span>
-
-						</a>
-</ul>
-
-						
-
-			</div>
+		
 			
 			
 			
 			
 			
 			<!-- 显示区 -->
-			<div class="main-content-inner" style="width: 1200px">
+			<div class="main-content-inner" style="width: 1600px">
 					<!-- #section:basics/content.breadcrumbs -->
 					<div class="breadcrumbs" id="breadcrumbs">
 						<script type="text/javascript">
@@ -509,9 +399,111 @@
 
 					<!-- /section:basics/content.breadcrumbs -->
 					<div class="page-content" id="a">
+						<div class="container-fluid " style="background:yellow">
+	<div class="container" style="background:grey; min-height:500px" >
+		<div class="row">
+			<div class="col-md-2" style="background:blue;min-height:200px ">
+			
+			<ul class="list-group">
+			<li class="list-group-item active">热门文章</li>
+			<c:forEach items="${list}" var="s">
+			
+			  <li class="list-group-item" value="${s.id}"><a href="#">${s.name}</a></li>
+			</c:forEach>
+			</ul>
+
+			</div>
+			
+		<div class="col-md-8" style="background:red;min-height:300px">
+				<!-- 轮播图 -->
+				<div id="myCarousel" class="carousel slide">
+						
+					<div class="carousel-inner">
+						<div class="item active">
+							<center><img src="/resource/images/马甜.jpg" alt="First slide" style="width: 500px;height: 400px" ></center>
+							<div class="carousel-caption">标题 1</div>
+						</div>
+						<div class="item">
+							<img src="/resource/images/QQ图片20190117214347.jpg" alt="Second slide" style="width: 700px;height: 400px">
+							<div class="carousel-caption">标题 2</div>
+						</div>
+						<div class="item">
+							<img src="/resource/images/1.jpg" alt="Third slide" style="width: 700px;height: 400px">
+							<div class="carousel-caption">标题 3</div>
+						</div>
+					</div>
+					<!-- 轮播（Carousel）导航 -->
+					<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+					    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					    <span class="sr-only">Previous</span>
+					</a>
+					<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+					    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					    <span class="sr-only">Next</span>
+					</a>
+				</div> 
+				<!-- 放文章的列表 -->
+					<div >
+						<c:forEach items="${info.list}" var="article">
+						<div class=row >
+							 <hr align="left" style="width:100%">
+							<div class="col-md-2"><img height="50px" width="50px" src="/resource/images/${article.picture}"></div>
+							<div class="col-md-10">
+								<a href="javascript:showArticle(${article.id})">${article.title}</a>
+								<br>
+								 频道：<a>${article.cname1}</a> &nbsp;&nbsp;
+								 分类：<a>${article.cname2}</a>
+								<br>
+								<br>
+								${article.username} 发布于  <fmt:formatDate value="${article.created}" pattern="yyyy-MM-dd"/> 
+							</div>
+						</div>
+						</c:forEach>
+					</div>
+							<div class="row">
+								<ul class="pagination">
+									    <li><a href="/user/list.do?pageNum=${info.prePage}">&laquo;</a></li>
+									    <c:forEach begin="${info.pageNum-2 > 1 ? info.pageNum-2:1}" end="${info.pageNum+2 > info.pages ? info.pages:info.pageNum+2}" varStatus="index">    		
+									    	<c:if test="${info.pageNum!=index.index}">
+									    		<li><a href="/index?pageNum=${index.index}">${index.index}</a></li>
+									    	</c:if>
+									    	<c:if test="${info.pageNum==index.index}">
+									    		<li><a href="/user/list.do?pageNum=${index.index}"><strong> ${index.index} </strong> </a></li>
+									    	</c:if>
+									    	
+									    </c:forEach>
+									    <li><a href="/user/list.do?pageNum=${info.nextPage}">&raquo;</a></li>
+									</ul>
+							</div>
+					</div>
 					
+					<div class="col-md-2" style="background:green;min-height:300px">
+				<div class="panel panel-default">
+				 <div class="panel-body">
+					这是一个基本的面板
+				</div>
+				<div class="panel-footer">面板脚注</div>
+				
+				<div class="panel-heading">
+						<h3 class="panel-title">最新文章</h3>
+				</div>
+					<div class="panel-body">
+						<c:forEach items="${newArticles}" var="article" varStatus="index">
+							${index.index+1} . <a href="javascript:showArticle(${article.id})">${article.title}</a>
+							<br/>
+						</c:forEach>
+				</div>
 					</div>
 			</div>
+			</div>
+			
+			
+		</div>
+	</div>
+  </div>
+	
+</div>
+						
 			
 			<!-- 尾部 -->
 			<div class="footer">
@@ -547,6 +539,11 @@
 	<script type="text/javascript">
 		function showFuction(url){
 			$(".page-content").load(url);
+		}
+	</script>
+	<script type="text/javascript">
+		function showArticle(articleId){
+			window.open("/article/showdetail?id="+articleId)
 		}
 	</script>
 </body>
