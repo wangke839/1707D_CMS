@@ -1,6 +1,5 @@
 package com.wangke.comm;
 
-import java.io.Serializable;
 /**
  * 
     * @ClassName: ResultInformation
@@ -9,15 +8,8 @@ import java.io.Serializable;
     * @date 2019年11月13日
     *
  */
-public class ResultInformation implements Serializable{
+public class ResultInformation {
 
-	
-	    /**
-	    * @Fields serialVersionUID : TODO(用一句话描述这个变量表示什么)
-	    */
-	private static final long serialVersionUID = 1L;
-	
-	
 	private int result;
 	private String errorMsg;
 	private Object data;

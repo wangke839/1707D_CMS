@@ -14,5 +14,11 @@ public interface UserMapper {
 
 	boolean updateStatus(@Param("userId")int userId,@Param("status") int status);
 
+	List login(User user);
+
+	int register(User user);
+
+	User findByName(@Param("username")String username);
+
 	
 }

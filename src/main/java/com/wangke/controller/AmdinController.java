@@ -1,5 +1,10 @@
 package com.wangke.controller;
 
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.github.pagehelper.PageInfo;
 import com.wangke.bean.User;
 import com.wangke.comm.CONTAINT;
+import com.wangke.comm.CmcException;
+import com.wangke.comm.CmsAssert;
 import com.wangke.comm.ResultInformation;
 import com.wangke.service.UserServicde;
 @Controller
@@ -61,5 +68,31 @@ public class AmdinController {
 		}else{
 			return new ResultInformation(CONTAINT.WRONG,"数据处理失败",null);
 		}
+	}
+	
+@RequestMapping("login")
+	public String login (User user,HttpServletRequest request) throws CmcException{
+		/*User logUser = us.login(user);
+		if(logUser != null){
+			request.getSession().setAttribute(CONTAINT.USER_KEY, logUser);
+			return "user/index";
+		}*/
+		return "user/login";
+		
+	}
+	/**
+	 * 处理用户提交的注册的数据
+	 * @param request
+	 * @param user
+	 * @return
+	 * @throws CmcException 
+	 */
+	@RequestMapping("register")
+	public String register(HttpServletRequest request,User user) throws CmcException {
+		
+		
+		int result = us.register(user);
+		CmsAssert.AssertTrue(result>0,"用户注册失败，请稍后再试");
+		return "login";
 	}
 }

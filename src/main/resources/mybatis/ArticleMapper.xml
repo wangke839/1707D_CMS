@@ -2,11 +2,18 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.wangke.mapper.ArticleMapper">
-	<select id="getById" resultType="map">
-		  SELECT a.*,b.name cname1 ,c.name cname2,d.username 
+<mapper namespace="com.wangke.mapper.IndexMapper">
+	<select id="showChannel" resultType="map">
+		SELECT * FROM cms_channel ORDER BY id
+	</select>
+	<select id="getNewArticles" resultType="map">
+		SELECT id,title FROM cms_article 
+		WHERE deleted=0 AND status=1 
+		ORDER BY created DESC  limit ${value}
+	</select>
+	<select id="getHotArticle" resultType="map">
+		SELECT a.*,b.name cname1 ,c.name cname2,d.username 
 			FROM cms_article a,cms_channel b,cms_category c,cms_user d 
-			WHERE a.channel_id=b.id AND a.category_id=c.id AND a.user_id=d.id 
-			AND a.deleted=0 AND a.status=1 AND a.hot=1 AND a.id=#{value}
+			WHERE a.channel_id=b.id AND a.category_id=c.id AND a.user_id=d.id AND a.deleted=0 AND a.status=1 AND a.hot=1
 	</select>
 </mapper>
