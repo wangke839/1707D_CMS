@@ -54,6 +54,65 @@ public class Article implements Serializable {
 	private int commentCnt       ;
 	//文章类型
 	private int articleType      ;
+	
+	
+	private String cname1;
+	private String cname2;
+	private String username;
+	
+	
+	
+	
+	public Article() {
+		super();
+	}
+	public Article(Integer id, String title, String content, String picture,
+			Integer channelId, Channel channel, String categoryId,
+			Category category, Integer userId, User user, int hits, int hot,
+			int status, int deleted, String created, Date updated,
+			int commentCnt, int articleType, String cname1, String cname2,
+			String username) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.content = content;
+		this.picture = picture;
+		this.channelId = channelId;
+		this.channel = channel;
+		this.categoryId = categoryId;
+		this.category = category;
+		this.userId = userId;
+		this.user = user;
+		this.hits = hits;
+		this.hot = hot;
+		this.status = status;
+		this.deleted = deleted;
+		this.created = created;
+		this.updated = updated;
+		this.commentCnt = commentCnt;
+		this.articleType = articleType;
+		this.cname1 = cname1;
+		this.cname2 = cname2;
+		this.username = username;
+	}
+	public String getCname1() {
+		return cname1;
+	}
+	public void setCname1(String cname1) {
+		this.cname1 = cname1;
+	}
+	public String getCname2() {
+		return cname2;
+	}
+	public void setCname2(String cname2) {
+		this.cname2 = cname2;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	public Integer getId() {
 		return id;
 	}

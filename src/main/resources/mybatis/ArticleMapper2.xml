@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wangke.mapper.ArticleMapper">
+	<select id="getById" resultType="map">
+		SELECT * FROM cms_article 
+		  WHERE id=#{value} AND deleted=0 AND status=1
+	</select>
+	
+	<select id="listByCat" resultType="map">
+	SELECT a.*,b.name cname1 ,c.name cname2,d.username 
+	FROM cms_article a,cms_channel b,cms_category c,cms_user d 
+	WHERE a.channel_id=b.id AND a.category_id=c.id AND a.user_id=d.id AND a.deleted=0
+	 AND a.status=1 AND  a.channel_id=#{chnId}
+			<if test=" categoryId!=0 ">
+				AND a.category_id=#{categoryId}
+			</if>
+			ORDER BY created DESC
+	</select>	
+	<select id="listByStatus" resultType="map">
+		SELECT a.*,b.name cname1 ,c.name cname2,d.username 
+			FROM cms_article a,cms_channel b,cms_category c,cms_user d 
+			WHERE a.channel_id=b.id AND a.category_id=c.id AND a.user_id=d.id 
+			and a.deleted=0  
+			<if test="status != -1 ">
+				AND status = #{value}
+			</if>
+			ORDER BY created DESC
+	</select>
+	<select id="getDetailById" resultType="article">
+		SELECT a.*,b.name cname1 ,c.name cname2,d.username 
+			FROM cms_article a,cms_channel b,cms_category c,cms_user d 
+			WHERE a.channel_id=b.id AND a.category_id=c.id AND a.user_id=d.id 
+			and a.deleted=0 and a.id=${value}
+	</select>
+</mapper>

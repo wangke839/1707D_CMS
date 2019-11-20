@@ -17,8 +17,15 @@
 <link rel="stylesheet" href="/resource/assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
 <script src="/resource/assets/js/ace-extra.js"></script>
 
+<!-- 轮播图 -->
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+<!-- 导航条 -->
+<nav class="navbar navbar-default">
+	<%@include  file="../comm/top.jsp"%>
+</nav>
 	<div id="navbar" class="navbar navbar-default">
 			<script type="text/javascript">
 				try{ace.settings.check('navbar' , 'fixed')}catch(e){}
@@ -380,10 +387,10 @@
 					</li>
 
 					<li class="">
-						<a href="#" class="dropdown-toggle">
+						<a href="javascript:showFuction('/admin/articles')" class="dropdown-toggle">
 							<i class="menu-icon fa fa-desktop"></i>
 							<span class="menu-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-								用户界面和元素
+								文章列表
 							</font></font></span>
 
 						</a>

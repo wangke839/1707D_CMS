@@ -1,7 +1,7 @@
 package com.wangke.controller;
 
 
-import java.util.List;
+import java.lang.reflect.Method;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,18 +13,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.github.pagehelper.PageInfo;
+import com.wangke.bean.Article;
 import com.wangke.bean.User;
 import com.wangke.comm.CONTAINT;
 import com.wangke.comm.CmcException;
 import com.wangke.comm.CmsAssert;
 import com.wangke.comm.ResultInformation;
+import com.wangke.service.ArticleService;
 import com.wangke.service.UserServicde;
+import com.zhukaige.common.MsgResult;
 @Controller
 @RequestMapping("admin")
 public class AmdinController {
 
 	@Autowired
 	private UserServicde us;
+	@Autowired
+	private ArticleService articleService;
 	@RequestMapping("list.do")
 	public String list(){
 		return "admin/index";
@@ -69,30 +74,67 @@ public class AmdinController {
 			return new ResultInformation(CONTAINT.WRONG,"数据处理失败",null);
 		}
 	}
-	
-@RequestMapping("login")
-	public String login (User user,HttpServletRequest request) throws CmcException{
-		/*User logUser = us.login(user);
-		if(logUser != null){
-			request.getSession().setAttribute(CONTAINT.USER_KEY, logUser);
-			return "user/index";
-		}*/
-		return "user/login";
+	/**
+	 * 
+	    * @Title: articles
+	    * @Description: 管理员获取文章列表    管理审核
+	    * @param @param m
+	    * @param @param status -1 全部  0 待审核  1 审核通过  2 审核未通过
+	    * @param @param page
+	    * @param @return    参数
+	    * @return String    返回类型
+	    * @throws
+	 */
+	@RequestMapping("articles")
+	public String articles(Model m,
+			@RequestParam(defaultValue="-1") int status,
+			@RequestParam(defaultValue="1") Integer page) {
+		//获取文章
+		PageInfo articlePage =  articleService.getPageList(status,page);
+		m.addAttribute("pageInfo", articlePage);
+		m.addAttribute("status", status);
 		
+		return "admin/article/list";
 	}
 	/**
-	 * 处理用户提交的注册的数据
-	 * @param request
-	 * @param user
-	 * @return
 	 * @throws CmcException 
+	 * 
+	    * @Title: getArticle
+	    * @Description: 对一篇详情文章进行处理
+	    * @param @param m
+	    * @param @param status
+	    * @param @param page
+	    * @param @return    参数
+	    * @return String    返回类型
+	    * @throws
 	 */
-	@RequestMapping("register")
-	public String register(HttpServletRequest request,User user) throws CmcException {
-		
-		
-		int result = us.register(user);
-		CmsAssert.AssertTrue(result>0,"用户注册失败，请稍后再试");
-		return "login";
+	@RequestMapping("getArticle")
+	@ResponseBody
+	public ResultInformation getArticle(int id) throws CmcException {
+		Article article = articleService.getDetailById(id);
+		CmsAssert.AssertTrue(article!=null, "文章不存在");
+		return new ResultInformation(1,"获取成功",article);
+	}
+	/**
+	 * 
+	    * @Title: applyArticle
+	    * @Description: 审核文章  通过 不通过
+	    * @param @param id
+	    * @param @param status
+	    * @param @return    参数
+	    * @return ResultInformation    返回类型
+	    * @throws
+	 */
+	@RequestMapping("applyArticle")
+	@ResponseBody
+	public ResultInformation applyArticle(int id,int status) {
+		Article article = articleService.checkExist(id);
+		CmsAssert.AssertTrue(article!=null, "该文已经不存在");
+		int result = articleService.apply( id,status);
+		if(result>0) {
+			return new ResultInformation(1,"处理成功",null);
+		}else {
+			return new ResultInformation(2,"处理失败",null);
+		}
 	}
 }

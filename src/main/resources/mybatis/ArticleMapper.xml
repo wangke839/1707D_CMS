@@ -16,4 +16,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			FROM cms_article a,cms_channel b,cms_category c,cms_user d 
 			WHERE a.channel_id=b.id AND a.category_id=c.id AND a.user_id=d.id AND a.deleted=0 AND a.status=1 AND a.hot=1
 	</select>
+	
 </mapper>

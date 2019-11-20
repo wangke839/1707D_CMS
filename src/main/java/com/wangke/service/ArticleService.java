@@ -11,4 +11,10 @@ public interface ArticleService {
 
 	PageInfo listByCat(int chnId, int categoryId, int pageNum);
 
+	PageInfo getPageList(int status, Integer page);
+
+	Article getDetailById(int id);
+
+	Article checkExist(int id);
+
 }

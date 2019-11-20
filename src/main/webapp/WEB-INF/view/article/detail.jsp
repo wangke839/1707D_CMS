@@ -11,7 +11,7 @@
  <script type="text/javascript" src="/resource/bootstrap/js/bootstrap.js"></script>
  <title></title>
 </head>
-<c:forEach items="${article}" var="a">
+<c:forEach items="${article}" var="a"></c:forEach>
 <body>
 	<div class="container">
 		<h2>
@@ -41,5 +41,4 @@
 
 
 </body>
-</c:forEach>
 </html>

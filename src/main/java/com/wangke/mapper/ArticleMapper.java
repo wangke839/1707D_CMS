@@ -11,6 +11,10 @@ public interface ArticleMapper {
 
 	List getById(Integer id);
 
-	List<Article> listByCat(@Param("chnId")int chnId,@Param("categoryId") int categoryId);
+	List<Article> listByCat(@Param("chnId")int chnId, @Param("categoryId")int categoryId);
+	
+	List listByStatus(@Param("status")int status);
+
+	Article getDetailById(int id);
 
 }
