@@ -90,8 +90,8 @@
 </table>
 <center>
 <ul class="pagination">
-    <li><a href="javascript:showFuction('/admin/articles?page=${info.prePage}')">&laquo;</a></li>
-    <c:forEach begin="${pageInfo.pageNum-2 > 1 ? info.pageNum-2:1}" end="${pageInfo.pageNum+2 > info.pages ? info.pages:info.pageNum+2}" varStatus="index">    		
+    <li><a href="javascript:showFuction('/admin/articles?page=${pageInfo.prePage}')">&laquo;</a></li>
+    <c:forEach begin="${pageInfo.pageNum-2 > 1 ? pageInfo.pageNum-2:1}" end="${pageInfo.pageNum+2 > pageInfo.pages ? pageInfo.pages:pageInfo.pageNum+2}" varStatus="index">    		
     	<c:if test="${pageInfo.pageNum!=index.index}">
     		<li><a href="javascript:showFuction('/admin/articles?page=${index.index}')">${index.index}</a></li>
     	</c:if>
@@ -100,7 +100,7 @@
     	</c:if>
     	
     </c:forEach>
-    <li><a href="javascript:showFuction('/admin/articles?page=${info.nextPage}')">&raquo;</a></li>
+    <li><a href="javascript:showFuction('/admin/articles?page=${pageInfo.nextPage}')">&raquo;</a></li>
 </ul>
 </center>
 
@@ -125,7 +125,7 @@
 					alert("审核操作成功");
 					$('#articleDetailModal').modal('hide');
 					// 刷新列表数据
-					//$("#content").load("/admin/articles?page=${pageInfo.pageNum}");
+					$("#content").load("/admin/articles?page=${pageInfo.pageNum}");
 				}else{
 					alert(data.errorMsg);
 				}
@@ -144,7 +144,7 @@
 					alert("审核操作成功");
 					$('#articleDetailModal').modal('hide');
 					// 刷新列表数据
-					//$("#content").load("/admin/articles?page=${pageInfo.pageNum}");
+					$("#content").load("/admin/articles?page=${pageInfo.pageNum}");
 				}else{
 					alert(data.errorMsg);
 				}

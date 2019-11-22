@@ -45,7 +45,7 @@ public class Article implements Serializable {
 	private int deleted          ;
 	
 	//发表时间
-	private String created          ;
+	private Date created          ;
 	
 	//最后修改时间
 	private Date updated          ;
@@ -59,19 +59,31 @@ public class Article implements Serializable {
 	private String cname1;
 	private String cname2;
 	private String username;
+	private Integer channel_id       ;
+	private String category_id      ;
 	
 	
-	
-	
+	public String getCategory_id() {
+		return category_id;
+	}
+	public void setCategory_id(String category_id) {
+		this.category_id = category_id;
+	}
 	public Article() {
 		super();
+	}
+	public Integer getChannel_id() {
+		return channel_id;
+	}
+	public void setChannel_id(Integer channel_id) {
+		this.channel_id = channel_id;
 	}
 	public Article(Integer id, String title, String content, String picture,
 			Integer channelId, Channel channel, String categoryId,
 			Category category, Integer userId, User user, int hits, int hot,
-			int status, int deleted, String created, Date updated,
+			int status, int deleted, Date created, Date updated,
 			int commentCnt, int articleType, String cname1, String cname2,
-			String username) {
+			String username, Integer channel_id, String category_id) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -94,6 +106,8 @@ public class Article implements Serializable {
 		this.cname1 = cname1;
 		this.cname2 = cname2;
 		this.username = username;
+		this.channel_id = channel_id;
+		this.category_id = category_id;
 	}
 	public String getCname1() {
 		return cname1;
@@ -197,10 +211,10 @@ public class Article implements Serializable {
 	public void setDeleted(int deleted) {
 		this.deleted = deleted;
 	}
-	public String getCreated() {
+	public Date getCreated() {
 		return created;
 	}
-	public void setCreated(String created) {
+	public void setCreated(Date created) {
 		this.created = created;
 	}
 	public Date getUpdated() {

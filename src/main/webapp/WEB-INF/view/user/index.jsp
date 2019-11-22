@@ -428,11 +428,11 @@
 						
 					<div class="carousel-inner">
 						<div class="item active">
-							<center><img src="/resource/images/马甜.jpg" alt="First slide" style="width: 500px;height: 400px" ></center>
+							<center><img src="/resource/images/马甜.jpg" alt="First slide" style="width: 500px;height: 400px" class="img-rounded" ></center>
 							<div class="carousel-caption">标题 1</div>
 						</div>
 						<div class="item">
-							<img src="/resource/images/QQ图片20190117214347.jpg" alt="Second slide" style="width: 700px;height: 400px">
+							<img src="/resource/images/QQ图片20190117214347.jpg" alt="Second slide" style="width: 700px;height: 400px" class="img-circle">
 							<div class="carousel-caption">标题 2</div>
 						</div>
 						<div class="item">

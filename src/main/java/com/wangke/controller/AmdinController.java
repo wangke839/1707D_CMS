@@ -21,7 +21,6 @@ import com.wangke.comm.CmsAssert;
 import com.wangke.comm.ResultInformation;
 import com.wangke.service.ArticleService;
 import com.wangke.service.UserServicde;
-import com.zhukaige.common.MsgResult;
 @Controller
 @RequestMapping("admin")
 public class AmdinController {
@@ -116,6 +115,7 @@ public class AmdinController {
 		return new ResultInformation(1,"获取成功",article);
 	}
 	/**
+	 * @throws CmcException 
 	 * 
 	    * @Title: applyArticle
 	    * @Description: 审核文章  通过 不通过
@@ -127,14 +127,42 @@ public class AmdinController {
 	 */
 	@RequestMapping("applyArticle")
 	@ResponseBody
-	public ResultInformation applyArticle(int id,int status) {
+	public ResultInformation applyArticle(int id,int status) throws CmcException {
+		//判断文章是否崔仔
 		Article article = articleService.checkExist(id);
-		CmsAssert.AssertTrue(article!=null, "该文已经不存在");
-		int result = articleService.apply( id,status);
+		CmsAssert.AssertTrue(article!=null, "该文章已经不存在");
+		//审核文章
+		int result = articleService.apply(id,status);
 		if(result>0) {
 			return new ResultInformation(1,"处理成功",null);
 		}else {
 			return new ResultInformation(2,"处理失败",null);
 		}
 	}
+	/**
+	 * 
+	    * @Title: setArticleHot
+	    * @Description: 设置文章是否热门
+	    * @param @param id
+	    * @param @param status
+	    * @param @return
+	    * @param @throws CmcException    参数
+	    * @return ResultInformation    返回类型
+	    * @throws
+	 */
+	@RequestMapping("setArticleHot")
+	@ResponseBody
+	public ResultInformation setArticleHot(int id,int status) throws CmcException {
+		//判断文章是否存在
+		Article article = articleService.checkExist(id);
+		CmsAssert.AssertTrue(article!=null, "该文章已经不存在");
+		//审核文章
+		int result = articleService.setHot(id,status);
+		if(result>0) {
+			return new ResultInformation(1,"处理成功",null);
+		}else {
+			return new ResultInformation(2,"处理失败",null);
+		}
+	}
+	
 }

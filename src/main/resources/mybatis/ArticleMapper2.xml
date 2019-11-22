@@ -3,9 +3,20 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wangke.mapper.ArticleMapper">
+	<resultMap type="article" id="articleMap">
+		<id column="id" property="id"></id>
+		<association property="user" column="user_id" select="com.wangke.mapper.UserMapper.getUserById"></association>
+		<association property="channel" column="channel_id" select="com.wangke.mapper.ChannelMapper.showChannel2"></association>
+		<association property="category" column="category_id" select="com.wangke.mapper.CategoryMapper.findById"></association>
+	</resultMap>
+	
 	<select id="getById" resultType="map">
 		SELECT * FROM cms_article 
 		  WHERE id=#{value} AND deleted=0 AND status=1
+	</select>
+	<select id="getById2" resultType="article">
+		SELECT * FROM cms_article 
+		  WHERE id=#{value} AND deleted=0
 	</select>
 	
 	<select id="listByCat" resultType="map">
@@ -34,4 +45,38 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			WHERE a.channel_id=b.id AND a.category_id=c.id AND a.user_id=d.id 
 			and a.deleted=0 and a.id=${value}
 	</select>
+	<select id="checkExist" resultType="article">
+		SELECT a.*,b.name cname1 ,c.name cname2,d.username 
+			FROM cms_article a,cms_channel b,cms_category c,cms_user d 
+			WHERE a.channel_id=b.id AND a.category_id=c.id AND a.user_id=d.id 
+			and a.deleted=0 and a.id=${value}
+	</select>
+	<update id="apply">
+		UPDATE cms_article SET  status=#{status}  WHERE id=#{id} 
+	</update>
+	<update id="setHot">
+		UPDATE cms_article SET  hot=#{status}  WHERE id=#{id} 
+	</update>
+	<delete id="delArticle">
+		delete from cms_article WHERE id=${value}
+	</delete>
+	<select id="listByUser" resultMap="articleMap">
+		SELECT id,title,picture,channel_id,category_id,hits,commentCnt,created,status
+			FROM cms_article 
+			WHERE deleted=0  AND user_id=#{value}
+			ORDER BY created DESC
+	</select>
+	<insert id="addArticle">
+		INSERT INTO cms_article(title,content,picture,channel_id,
+		category_id,user_id,hits,hot,status,deleted,
+		created,updated,commentCnt,articleType)
+		values(#{title},#{content},#{picture},#{channelId},#{categoryId},
+		#{userId},#{hits},#{hot},#{status},#{deleted},
+		now(),now(),#{commentCnt},#{articleType})
+	</insert>
+	<update id="updateArticle">
+		UPDATE cms_article SET title=#{title},content=#{content},
+			picture=#{picture},channel_id=#{channelId},
+			category_id=#{categoryId},status=0,updated=now() WHERE id=#{id}
+	</update>
 </mapper>

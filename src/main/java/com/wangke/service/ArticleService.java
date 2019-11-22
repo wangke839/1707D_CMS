@@ -17,4 +17,18 @@ public interface ArticleService {
 
 	Article checkExist(int id);
 
+	int apply(int id, int status);
+
+	int setHot(int id, int status);
+
+	int delArticle(int id);
+
+	PageInfo<Article> listByUser(int page, Integer id);
+
+	int addArticle(Article article);
+
+	int updateArticle(Article article);
+
+	Article getById2(int id);
+
 }

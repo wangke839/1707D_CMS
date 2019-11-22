@@ -17,4 +17,20 @@ public interface ArticleMapper {
 
 	Article getDetailById(int id);
 
+	Article checkExist(int id);
+
+	int apply(@Param("id")int id,@Param("status") int status);
+
+	int setHot(@Param("id")int id,@Param("status") int status);
+
+	int delArticle(int id);
+
+	List<Article> listByUser(Integer id);
+
+	int addArticle(Article article);
+
+	int updateArticle(Article article);
+
+	Article getById2(int id);
+
 }
