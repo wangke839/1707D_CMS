@@ -3,6 +3,7 @@ package com.wangke.controller;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -21,7 +22,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.github.pagehelper.PageInfo;
+import com.google.gson.Gson;
 import com.wangke.bean.Article;
+import com.wangke.bean.ArticleType;
+import com.wangke.bean.Image;
 import com.wangke.bean.User;
 import com.wangke.comm.CONTAINT;
 import com.wangke.comm.CmcException;
@@ -30,6 +34,7 @@ import com.wangke.comm.ResultInformation;
 import com.wangke.service.ArticleService;
 import com.wangke.service.CategoryService;
 import com.wangke.service.ChannelService;
+import com.wangke.service.FavariteService;
 import com.wangke.service.IndexService;
 import com.wangke.service.UserServicde;
 
@@ -38,6 +43,8 @@ import com.wangke.service.UserServicde;
 public class UserController {
 	@Autowired
 	private IndexService is;
+	@Autowired
+	private FavariteService favariteService;
 	@Autowired
 	private UserServicde us;
 	@Autowired
@@ -173,7 +180,7 @@ public String login (User user,HttpServletRequest request) throws CmcException{
 	@RequestMapping("loginOut")
 	public String loginOut(HttpServletRequest request)  {
 		request.getSession().removeAttribute(CONTAINT.USER_KEY);
-		return "redirect:/";
+		return "user/login";
 	}
 	/**
 	 * 
@@ -319,5 +326,50 @@ public String login (User user,HttpServletRequest request) throws CmcException{
 		str = str.replaceAll(">", "&gt;");
 		str = str.replaceAll("\"", "&quot;");
 		return str;
+	}
+	@GetMapping("postImg")
+	public String postImg(Model m){
+		List channel = channelService.showChannel();
+		m.addAttribute("channel",channel);
+		return "article/img";
+		
+	}
+	@PostMapping("postImg")
+	@ResponseBody
+	public ResultInformation postImg(HttpServletRequest request,MultipartFile file[],Article article,String desc[]) throws IllegalStateException, IOException{
+		
+		List<Image> list = new ArrayList<Image>();
+		User loginUser = (User) request.getSession().getAttribute(CONTAINT.USER_KEY);
+		for (int i = 0; i < file.length && i < desc.length; i++) {
+			String url = processFile(file[i]);
+			Image image = new Image();
+			image.setUrl(url);
+			image.setDesc(desc[i]);
+			list.add(image);
+		}
+		Gson gson = new Gson();
+		
+		//设置作者
+		article.setUserId(loginUser.getId());
+		article.setContent(gson.toJson(list));
+		article.setImgList(list);
+		article.setArticleType(ArticleType.IMAGE);
+		request.setAttribute("article", article);
+		int add = articleService.addArticle(article);
+		if(add > 0) {
+			return new ResultInformation(1, "发布图片文章成功", null);
+		}else {
+			return new ResultInformation(2, "发布图片文章失败", null);
+		}
+		
+	}
+	@RequestMapping("myCollection")
+	public String myCollection(HttpServletRequest request){
+		User loginUser = (User) request.getSession().getAttribute(CONTAINT.USER_KEY);
+		List colle = favariteService.getCollection(loginUser.getId());
+		request.setAttribute("colle", colle);
+		return "user/favarite";
+		
+		
 	}
 }

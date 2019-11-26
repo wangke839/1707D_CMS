@@ -24,9 +24,12 @@ public class IndexController {
 		PageInfo info = is.getHotArticle(pageNum);
 //		获得最新文章
 		List newArticles = is.getNewArticle(5);
+//		获取图片文章
+		List imgArticles = is.getImgArticle(5);
 		m.addAttribute("list", list);
 		m.addAttribute("info", info);
 		m.addAttribute("newArticles", newArticles);
+		m.addAttribute("imgArticles", imgArticles);
 		return "user/index";
 	}
 }

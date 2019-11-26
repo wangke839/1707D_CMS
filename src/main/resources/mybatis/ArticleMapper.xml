@@ -11,6 +11,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE deleted=0 AND status=1 
 		ORDER BY created DESC  limit ${value}
 	</select>
+	<select id="getImgArticle" resultType="map">
+		SELECT id,title FROM cms_article 
+		WHERE deleted=0 AND status=1 AND articleType=1
+		ORDER BY created DESC  limit ${value}
+	</select>
 	<select id="getHotArticle" resultType="map">
 		SELECT a.*,b.name cname1 ,c.name cname2,d.username 
 			FROM cms_article a,cms_channel b,cms_category c,cms_user d 

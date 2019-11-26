@@ -1,6 +1,6 @@
 package com.wangke.comm;
 
-public class CmcException extends Exception {
+public class CmcException extends RuntimeException {
 
 	
 	    /**

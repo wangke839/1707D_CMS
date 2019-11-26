@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</select>
 	<select id="getUserById" resultType="User">
-		select * from cms_user where id = ${userId} 
+		select * from cms_user where id = ${value} 
 	</select>
 	<select id="findByName" resultType="User">
 		select * from cms_user where username = #{username} limit 1

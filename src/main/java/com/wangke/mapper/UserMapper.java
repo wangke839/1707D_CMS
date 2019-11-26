@@ -10,7 +10,7 @@ public interface UserMapper {
 
 	List showUsers(@Param("mohu")String mohu);
 
-	User getUserById(@Param("userId")int userId);
+	User getUserById(int userId);
 
 	boolean updateStatus(@Param("userId")int userId,@Param("status") int status);
 

@@ -9,7 +9,7 @@ import com.wangke.bean.Article;
 
 public interface ArticleMapper {
 
-	List getById(Integer id);
+	Article getById(Integer id);
 
 	List<Article> listByCat(@Param("chnId")int chnId, @Param("categoryId")int categoryId);
 	

@@ -20,7 +20,7 @@ public class ArticleServiceImpl implements ArticleService{
 	private ArticleMapper aticleMapper;
 
 	@Override
-	public List getById(Integer id) {
+	public Article getById(Integer id) {
 		// TODO Auto-generated method stub
 		return aticleMapper.getById(id);
 	}
@@ -94,4 +94,5 @@ public class ArticleServiceImpl implements ArticleService{
 		// TODO Auto-generated method stub
 		return aticleMapper.getById2(id);
 	}
+
 }

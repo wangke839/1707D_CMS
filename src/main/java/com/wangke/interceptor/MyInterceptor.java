@@ -20,7 +20,7 @@ public class MyInterceptor implements HandlerInterceptor {
 		
 		// 用户没有登录
 		if(loginUser==null) {
-			response.sendRedirect("/user/login");
+			response.sendRedirect("/user/login.do");
 			return false;
 		}
 		
@@ -31,7 +31,7 @@ public class MyInterceptor implements HandlerInterceptor {
 				&& loginUser.getRole()==CONTAINT.USER_ROLE_GENERAL ) {
 			request.setAttribute("errorMsg", "只有管理员才能访问这个页面");
 			//response.sendRedirect("/user/login");
-			request.getRequestDispatcher("/user/login").forward(request, response);
+			request.getRequestDispatcher("/user/login.do").forward(request, response);
 			return false;
 		}
 		return true;

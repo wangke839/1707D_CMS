@@ -5,12 +5,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.wangke.mapper.ArticleMapper">
 	<resultMap type="article" id="articleMap">
 		<id column="id" property="id"></id>
+		<result property="channelId" column="channel_id"/>
+		<result property="categoryId" column="category_id"/>
+		<result property="userId" column="user_id"/>
+		<result property="articleType" column="articleType" typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler"
+			jdbcType="INTEGER" javaType="com.wangke.bean.ArticleType"
+		/>
 		<association property="user" column="user_id" select="com.wangke.mapper.UserMapper.getUserById"></association>
 		<association property="channel" column="channel_id" select="com.wangke.mapper.ChannelMapper.showChannel2"></association>
 		<association property="category" column="category_id" select="com.wangke.mapper.CategoryMapper.findById"></association>
 	</resultMap>
 	
-	<select id="getById" resultType="map">
+	<select id="getById" resultMap="articleMap">
 		SELECT * FROM cms_article 
 		  WHERE id=#{value} AND deleted=0 AND status=1
 	</select>
@@ -67,12 +73,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			ORDER BY created DESC
 	</select>
 	<insert id="addArticle">
-		INSERT INTO cms_article(title,content,picture,channel_id,
+		<!-- INSERT INTO cms_article(title,content,picture,channel_id,
 		category_id,user_id,hits,hot,status,deleted,
 		created,updated,commentCnt,articleType)
 		values(#{title},#{content},#{picture},#{channelId},#{categoryId},
 		#{userId},#{hits},#{hot},#{status},#{deleted},
-		now(),now(),#{commentCnt},#{articleType})
+		now(),now(),#{commentCnt},#{articleType}) -->
+		
+		INSERT INTO cms_article(
+			 title,content,picture,channel_id,category_id,
+			 user_id,hits,hot,status,deleted,
+			 created,updated,commentCnt,articleType) 
+			 values(
+			 #{title},#{content},#{picture},#{channelId},#{categoryId},
+			#{userId},#{hits},#{hot},#{status},#{deleted},
+			now(),now(),#{commentCnt},
+			#{articleType,typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler,
+			jdbcType=INTEGER,javaType=com.wangke.bean.ArticleType})
 	</insert>
 	<update id="updateArticle">
 		UPDATE cms_article SET title=#{title},content=#{content},

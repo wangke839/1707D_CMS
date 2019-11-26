@@ -37,5 +37,11 @@ public class IndexServiceImpl implements IndexService{
 		PageInfo info = new PageInfo(list);
 		return info;
 	}
+
+	@Override
+	public List getImgArticle(int i) {
+		// TODO Auto-generated method stub
+		return im.getImgArticle(i);
+	}
 	
 }

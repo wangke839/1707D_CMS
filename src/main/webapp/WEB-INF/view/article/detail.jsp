@@ -11,20 +11,21 @@
  <script type="text/javascript" src="/resource/bootstrap/js/bootstrap.js"></script>
  <title></title>
 </head>
-<c:forEach items="${article}" var="a">
 <body>
 	<div class="container">
 		<h2>
-			${a.title}
+			${article.title}
 		</h2>
 		<h5>
-			作者：${a.username} 
-			&nbsp;&nbsp;&nbsp;&nbsp; 发布时间：${a.created} 
-			&nbsp;&nbsp;&nbsp;&nbsp; 频道：${a.cname1} 
-			&nbsp;&nbsp;&nbsp;&nbsp; 分类：${a.cname2} 
+			作者：${article.user.username} 
+			&nbsp;&nbsp;&nbsp;&nbsp; 发布时间：${article.created} 
+			&nbsp;&nbsp;&nbsp;&nbsp; 频道：${article.channel.name} 
+			&nbsp;&nbsp;&nbsp;&nbsp; 分类：${article.category.name} &nbsp;&nbsp;&nbsp;&nbsp;
+			
+			<a href="javascript:favarite(${article.id})">收藏</a>
 		</h5>
 		<div>
-			${a.content}
+			${article.content}
 		</div>
 		<div>
 			<nav aria-label="...">
@@ -38,8 +39,22 @@
 			<!-- 	显示文章的评论 -->
 		</div>
 	</div>
-
+<script type="text/javascript">
+	function favarite(articleId){
+		$.post(
+			"favarite",
+			{id:articleId},
+			function(msg){
+				if(msg.result == 1){
+					alert("收藏成功");
+				}else{
+					alert(msg.errorMsg);
+				}
+			},
+			"json"
+		)
+	}
+</script>
 
 </body>
-</c:forEach>
 </html>

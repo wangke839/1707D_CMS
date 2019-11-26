@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wangke.mapper.FavariteMapper">
+<resultMap type="article" id="articleMap">
+		<id column="id" property="id"></id>
+		<result property="channelId" column="channel_id"/>
+		<result property="categoryId" column="category_id"/>
+		<result property="userId" column="user_id"/>
+		<result property="articleType" column="articleType" typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler"
+			jdbcType="INTEGER" javaType="com.wangke.bean.ArticleType"
+		/>
+		<association property="user" column="user_id" select="com.wangke.mapper.UserMapper.getUserById"></association>
+		<association property="channel" column="channel_id" select="com.wangke.mapper.ChannelMapper.showChannel2"></association>
+		<association property="category" column="category_id" select="com.wangke.mapper.CategoryMapper.findById"></association>
+	</resultMap>
+	<insert id="favarite">
+		REPLACE into cms_favaritte values(0,${articleId},${userId},now())
+	</insert>
+	<select id="getCollection" resultMap="articleMap">
+		select b.* from cms_favaritte a left join cms_article b on a.article_id = b.id where a.user_id =${value};
+	</select>
+</mapper>

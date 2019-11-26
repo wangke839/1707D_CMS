@@ -399,9 +399,9 @@
 					</li>
 
 					<li class="">
-						<a href="#" class="dropdown-toggle">
+						<a href="javascript:showFuction('/admin/link')" class="dropdown-toggle">
 							<i class="menu-icon fa fa-list"></i>
-							<span class="menu-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 桌子&emsp;&emsp; </font></font></span>
+							<span class="menu-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 友情链接管理&emsp;&emsp; </font></font></span>
 
 							<b class="arrow fa fa-angle-down"></b>
 						</a>

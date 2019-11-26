@@ -12,4 +12,6 @@ public interface IndexService {
 
 	PageInfo getHotArticle(Integer pageNum);
 
+	List getImgArticle(int i);
+
 }

@@ -487,11 +487,14 @@
 					
 					<div class="col-md-2" style="min-height:300px">
 				<div class="panel panel-default">
-				 <div class="panel-body">
-					这是一个基本的面板
-				</div>
-				<div class="panel-footer">面板脚注</div>
 				
+				<div class="panel-footer">图片文章</div>
+				<div class="panel-body">
+					<c:forEach items="${imgArticles}" var="article" varStatus="index">
+							${index.index+1} . <a href="javascript:showArticle(${article.id})">${article.title}</a>
+							<br/>
+					</c:forEach>
+				</div>
 				<div class="panel-heading">
 						<h3 class="panel-title">最新文章</h3>
 				</div>
@@ -518,6 +521,9 @@
 				<div class="footer-inner">
 					<!-- #section:basics/footer -->
 					<div class="footer-content">
+						<span>
+							
+						</span>
 						<span class="bigger-120">
 							<span class="blue bolder">KE</span>
 							阿珂6666 © 2019-2020

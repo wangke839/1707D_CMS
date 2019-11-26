@@ -10,4 +10,6 @@ public interface IndexMapper {
 
 	List getHotArticle();
 
+	List getImgArticle(int i);
+
 }

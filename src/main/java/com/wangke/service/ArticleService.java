@@ -7,7 +7,7 @@ import com.wangke.bean.Article;
 
 public interface ArticleService {
 
-	List getById(Integer id);
+	Article getById(Integer id);
 
 	PageInfo listByCat(int chnId, int categoryId, int pageNum);
 
@@ -30,5 +30,6 @@ public interface ArticleService {
 	int updateArticle(Article article);
 
 	Article getById2(int id);
+
 
 }
