@@ -30,342 +30,7 @@
 <nav class="navbar navbar-default">
 	<%@include  file="../comm/top.jsp"%>
 </nav>
-	<div id="navbar" class="navbar navbar-default">
-			<script type="text/javascript">
-				try{ace.settings.check('navbar' , 'fixed')}catch(e){}
-			</script>
-
-			<div class="navbar-container" id="navbar-container">
-				<!-- #section:basics/sidebar.mobile.toggle -->
-				<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
-					<span class="sr-only"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">切换侧栏</font></font></span>
-
-					<span class="icon-bar"></span>
-
-					<span class="icon-bar"></span>
-
-					<span class="icon-bar"></span>
-				</button>
-
-				<!-- /section:basics/sidebar.mobile.toggle -->
-				<div class="navbar-header pull-left">
-					<!-- #section:basics/navbar.layout.brand -->
-					<a href="#" class="navbar-brand">
-						<small>
-							<i class="fa fa-leaf"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-							CMS——made by ke 
-						</font></font></small>
-					</a>
-
-					<!-- /section:basics/navbar.layout.brand -->
-
-					<!-- #section:basics/navbar.toggle -->
-
-					<!-- /section:basics/navbar.toggle -->
-				</div>
-
-				<!-- #section:basics/navbar.dropdown -->&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-				<div class="navbar-buttons navbar-header pull-right" role="navigation">
-					<ul class="nav ace-nav" style="">
-						<li class="grey">
-							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-								<i class="ace-icon fa fa-tasks"></i>
-								<span class="badge badge-grey"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">4</font></font></span>
-							</a>
-
-							<ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
-								<li class="dropdown-header">
-									<i class="ace-icon fa fa-check"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-									完成4个任务
-								</font></font></li>
-
-								<li class="dropdown-content ace-scroll" style="position: relative;"><div class="scroll-track" style="display: none;"><div class="scroll-bar"></div></div><div class="scroll-content" style="max-height: 200px;">
-									<ul class="dropdown-menu dropdown-navbar">
-										<li>
-											<a href="#">
-												<div class="clearfix">
-													<span class="pull-left"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">软件更新</font></font></span>
-													<span class="pull-right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">65％</font></font></span>
-												</div>
-
-												<div class="progress progress-mini">
-													<div style="width:65%" class="progress-bar"></div>
-												</div>
-											</a>
-										</li>
-
-										<li>
-											<a href="#">
-												<div class="clearfix">
-													<span class="pull-left"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">硬件升级</font></font></span>
-													<span class="pull-right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">35％</font></font></span>
-												</div>
-
-												<div class="progress progress-mini">
-													<div style="width:35%" class="progress-bar progress-bar-danger"></div>
-												</div>
-											</a>
-										</li>
-
-										<li>
-											<a href="#">
-												<div class="clearfix">
-													<span class="pull-left"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">单元测试</font></font></span>
-													<span class="pull-right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">15％</font></font></span>
-												</div>
-
-												<div class="progress progress-mini">
-													<div style="width:15%" class="progress-bar progress-bar-warning"></div>
-												</div>
-											</a>
-										</li>
-
-										<li>
-											<a href="#">
-												<div class="clearfix">
-													<span class="pull-left"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">错误修正</font></font></span>
-													<span class="pull-right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">90％</font></font></span>
-												</div>
-
-												<div class="progress progress-mini progress-striped active">
-													<div style="width:90%" class="progress-bar progress-bar-success"></div>
-												</div>
-											</a>
-										</li>
-									</ul>
-								</div></li>
-
-								<li class="dropdown-footer">
-									<a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-										详细了解任务
-										</font></font><i class="ace-icon fa fa-arrow-right"></i>
-									</a>
-								</li>
-							</ul>
-						</li>
-
-						<li class="purple">
-							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-								<i class="ace-icon fa fa-bell icon-animated-bell"></i>
-								<span class="badge badge-important"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">8</font></font></span>
-							</a>
-
-							<ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
-								<li class="dropdown-header">
-									<i class="ace-icon fa fa-exclamation-triangle"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-									8条通知
-								</font></font></li>
-
-								<li class="dropdown-content ace-scroll" style="position: relative;"><div class="scroll-track" style="display: none;"><div class="scroll-bar"></div></div><div class="scroll-content" style="max-height: 200px;">
-									<ul class="dropdown-menu dropdown-navbar navbar-pink">
-										<li>
-											<a href="#">
-												<div class="clearfix">
-													<span class="pull-left">
-														<i class="btn btn-xs no-hover btn-pink fa fa-comment"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-														新评论
-													 </font></font></span>
-													<span class="pull-right badge badge-info"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+12</font></font></span>
-												</div>
-											</a>
-										</li>
-
-										<li>
-											<a href="#">
-												<i class="btn btn-xs btn-primary fa fa-user"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-												鲍勃（Bob）刚刚注册成为编辑...
-											</font></font></a>
-										</li>
-
-										<li>
-											<a href="#">
-												<div class="clearfix">
-													<span class="pull-left">
-														<i class="btn btn-xs no-hover btn-success fa fa-shopping-cart"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-														新订单
-													 </font></font></span>
-													<span class="pull-right badge badge-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+8</font></font></span>
-												</div>
-											</a>
-										</li>
-
-										<li>
-											<a href="#">
-												<div class="clearfix">
-													<span class="pull-left">
-														<i class="btn btn-xs no-hover btn-info fa fa-twitter"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-														关注者
-													 </font></font></span>
-													<span class="pull-right badge badge-info"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">+11</font></font></span>
-												</div>
-											</a>
-										</li>
-									</ul>
-								</div></li>
-
-								<li class="dropdown-footer">
-									<a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-										查看所有通知
-										</font></font><i class="ace-icon fa fa-arrow-right"></i>
-									</a>
-								</li>
-							</ul>
-						</li>
-
-						<li class="green">
-							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-								<i class="ace-icon fa fa-envelope icon-animated-vertical"></i>
-								<span class="badge badge-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">5</font></font></span>
-							</a>
-
-							<ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
-								<li class="dropdown-header">
-									<i class="ace-icon fa fa-envelope-o"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-									5条消息
-								</font></font></li>
-
-								<li class="dropdown-content ace-scroll" style="position: relative;"><div class="scroll-track" style="display: none;"><div class="scroll-bar"></div></div><div class="scroll-content" style="max-height: 200px;">
-									<ul class="dropdown-menu dropdown-navbar">
-										<li>
-											<a href="#" class="clearfix">
-												<span class="msg-body">
-													<span class="msg-title">
-														<span class="blue"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">亚历克斯（Alex）：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
-														Ciao sociis natoque penatibus et auctor ...
-													</font></font></span>
-
-													<span class="msg-time">
-														<i class="ace-icon fa fa-clock-o"></i>
-														<span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">刚才</font></font></span>
-													</span>
-												</span>
-											</a>
-										</li>
-
-										<li>
-											<a href="#" class="clearfix">
-												<img src="/resource/assets/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar">
-												<span class="msg-body">
-													<span class="msg-title">
-														<span class="blue"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">苏珊（Susan）：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
-														Vestibulum id ligula porta felis euismod ...
-													</font></font></span>
-
-													<span class="msg-time">
-														<i class="ace-icon fa fa-clock-o"></i>
-														<span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">20分钟前</font></font></span>
-													</span>
-												</span>
-											</a>
-										</li>
-
-										<li>
-											<a href="#" class="clearfix">
-												<img src="/resource/assets/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar">
-												<span class="msg-body">
-													<span class="msg-title">
-														<span class="blue"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bob：</font></font></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
-														Nullam quis risus eget urna mollis ornare ...
-													</font></font></span>
-
-													<span class="msg-time">
-														<i class="ace-icon fa fa-clock-o"></i>
-														<span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下午3:15</font></font></span>
-													</span>
-												</span>
-											</a>
-										</li>
-
-										<li>
-											<a href="#" class="clearfix">
-												<img src="/resource/assets/avatars/avatar2.png" class="msg-photo" alt="Kate's Avatar">
-												<span class="msg-body">
-													<span class="msg-title">
-														<span class="blue">Kate:</span>
-														Ciao sociis natoque eget urna mollis ornare ...
-													</span>
-
-													<span class="msg-time">
-														<i class="ace-icon fa fa-clock-o"></i>
-														<span>1:33 pm</span>
-													</span>
-												</span>
-											</a>
-										</li>
-
-										<li>
-											<a href="#" class="clearfix">
-												<img src="/resource/assets/avatars/avatar5.png" class="msg-photo" alt="Fred's Avatar">
-												<span class="msg-body">
-													<span class="msg-title">
-														<span class="blue">Fred:</span>
-														Vestibulum id penatibus et auctor  ...
-													</span>
-
-													<span class="msg-time">
-														<i class="ace-icon fa fa-clock-o"></i>
-														<span>10:09 am</span>
-													</span>
-												</span>
-											</a>
-										</li>
-									</ul>
-								</div></li>
-
-								<li class="dropdown-footer">
-									<a href="inbox.html">
-										See all messages
-										<i class="ace-icon fa fa-arrow-right"></i>
-									</a>
-								</li>
-							</ul>
-						</li>
-
-						<!-- #section:basics/navbar.user_menu -->
-						<li class="light-blue">
-							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
-								<img class="nav-user-photo" src="/resource/assets/avatars/user.jpg" alt="杰森的照片">
-								<span class="user-info">
-									<small><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">欢迎，</font></font></small><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
-									珂哥
-								</font></font></span>
-
-								<i class="ace-icon fa fa-caret-down"></i>
-							</a>
-
-							<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-								<li>
-									<a href="#">
-										<i class="ace-icon fa fa-cog"></i>
-										设置
-									</a>
-								</li>
-
-								<li>
-									<a href="profile.html">
-										<i class="ace-icon fa fa-user"></i>
-										详情
-									</a>
-								</li>
-
-								<li class="divider"></li>
-
-								<li>
-									<a href="#">
-										<i class="ace-icon fa fa-power-off"></i>
-										登出
-									</a>
-								</li>
-							</ul>
-						</li>
-
-						<!-- /section:basics/navbar.user_menu -->
-					</ul>
-				</div>
-
-				<!-- /section:basics/navbar.dropdown -->
-			</div><!-- /.navbar-container -->
-		</div>
+	
 		
 		
 		
@@ -395,11 +60,12 @@
 
 						<!-- #section:basics/content.searchbox -->
 						<div class="nav-search" id="nav-search">
-							<form class="form-search">
+							<form class="form-search" action="search" method="post">
 								<span class="input-icon">
-									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off">
+									<input type="text" name="key" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off">
 									<i class="ace-icon fa fa-search nav-search-icon"></i>
 								</span>
+								<input type="submit" value="查找">
 							</form>
 						</div><!-- /.nav-search -->
 
@@ -409,7 +75,7 @@
 					<!-- /section:basics/content.breadcrumbs -->
 					<div class="page-content" id="a">
 						<div class="container-fluid " style="background:pink">
-	<div class="container" style=" min-height:500px" >
+	<div class="container"  style=" overflow-y:auto; overflow-x:auto; width:1000px; height:500px;" >
 		<div class="row">
 			<div class="col-md-2" style="min-height:200px ">
 			
@@ -451,8 +117,42 @@
 					</a>
 				</div> 
 				<!-- 放文章的列表 -->
-					<div >
-						<c:forEach items="${info.list}" var="article">
+								<center><h3><font color="red">热门文章</font></h3></center>
+					<div class="hotbox" style="background-color:;">
+						<c:forEach items="${info.list}" var="article" >
+						<div class=row >
+							 <hr align="left" style="width:100%">
+							<div class="col-md-2"><img height="50px" width="50px" src="/resource/images/${article.picture}"></div>
+							<div class="col-md-10">
+								<a href="javascript:showArticle(${article.id})">${article.title}</a>
+								<br>
+								 频道：<a>${article.cname1}</a> &nbsp;&nbsp;
+								 分类：<a>${article.cname2}</a>
+								<br>
+								<br>
+								${article.username} 发布于  <fmt:formatDate value="${article.created}" pattern="yyyy-MM-dd"/> 
+							</div>
+						</div>
+						</c:forEach>
+					</div>
+						<div class="row">
+								<ul class="pagination">
+									    <li><a href="/user/list.do?pageNum=${info.prePage}">&laquo;</a></li>
+									    <c:forEach begin="${info.pageNum-2 > 1 ? info.pageNum-2:1}" end="${info.pageNum+2 > info.pages ? info.pages:info.pageNum+2}" varStatus="index">    		
+									    	<c:if test="${info.pageNum!=index.index}">
+									    		<li><a href="/index?pageNum=${index.index}">${index.index}</a></li>
+									    	</c:if>
+									    	<c:if test="${info.pageNum==index.index}">
+									    		<li><a href="/user/list.do?pageNum=${index.index}"><strong> ${index.index} </strong> </a></li>
+									    	</c:if>
+									    	
+									    </c:forEach>
+									    <li><a href="/user/list.do?pageNum=${info.nextPage}">&raquo;</a></li>
+									</ul>
+							</div>
+							<center><h3><font color="red">查询文章</font></h3></center>
+					<div class="searchbox" style="background-color:yellow;">
+						<c:forEach items="${info2.list}" var="article">
 						<div class=row >
 							 <hr align="left" style="width:100%">
 							<div class="col-md-2"><img height="50px" width="50px" src="/resource/images/${article.picture}"></div>
@@ -470,17 +170,16 @@
 					</div>
 							<div class="row">
 								<ul class="pagination">
-									    <li><a href="/user/list.do?pageNum=${info.prePage}">&laquo;</a></li>
-									    <c:forEach begin="${info.pageNum-2 > 1 ? info.pageNum-2:1}" end="${info.pageNum+2 > info.pages ? info.pages:info.pageNum+2}" varStatus="index">    		
-									    	<c:if test="${info.pageNum!=index.index}">
-									    		<li><a href="/index?pageNum=${index.index}">${index.index}</a></li>
+									    <li><a href="search?pageNum=${info2.prePage}&key=${key}">&laquo;</a></li>
+									    <c:forEach begin="${info2.pageNum-2 > 1 ? info2.pageNum-2:1}" end="${info2.pageNum+2 > info2.pages ? info2.pages:info2.pageNum+2}" varStatus="index">    		
+									    	<c:if test="${info2.pageNum!=index.index}">
+									    		<li><a href=search?pageNum=${index.index}&key=${key}">${index.index}</a></li>
 									    	</c:if>
-									    	<c:if test="${info.pageNum==index.index}">
-									    		<li><a href="/user/list.do?pageNum=${index.index}"><strong> ${index.index} </strong> </a></li>
+									    	<c:if test="${info2.pageNum==index.index}">
+									    		<li><a href="search?pageNum=${index.index}&key=${key}"><strong> ${index.index} </strong> </a></li>
 									    	</c:if>
-									    	
 									    </c:forEach>
-									    <li><a href="/user/list.do?pageNum=${info.nextPage}">&raquo;</a></li>
+									    <li><a href="search?pageNum=${info2.nextPage}&key=${key}">&raquo;</a></li>
 									</ul>
 							</div>
 					</div>
@@ -560,9 +259,10 @@
 			window.open("/article/showdetail?id="+articleId)
 		}
 	</script>
+	
  <script>
 // 纯原生js版
-function flySnow(){
+ function flySnow(){
 	var snow = document.createElement("div");
 	snow.style.cssText = 'position:absolute;color:#fff;';
 	var vw = document.documentElement.clientWidth - 20,
@@ -597,14 +297,13 @@ function flySnow(){
 		},0)
 	},15)
 }
-flySnow();
+flySnow(); 
 </script>
  
  
-<script src="jquery-1.12.4.js"></script>
-<script>
+ <script>
 //面向对象版
-let flySnow = (function(){
+ /* let flySnow = (function(){
 	function Fn(){
 		this.snow = function(d){
 			let vw = $(document).innerWidth(),
@@ -653,7 +352,7 @@ let flySnow = (function(){
 	}
 	return new Fn();
 }());
-flySnow.fly(30, "slow");
-</script> -->
+flySnow.fly(30, "slow");  */
+</script> 
 </body>
 </html>

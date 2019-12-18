@@ -15,10 +15,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<association property="channel" column="channel_id" select="com.wangke.mapper.ChannelMapper.showChannel2"></association>
 		<association property="category" column="category_id" select="com.wangke.mapper.CategoryMapper.findById"></association>
 	</resultMap>
-	<insert id="favarite">
-		REPLACE into cms_favaritte values(0,${articleId},${userId},now())
-	</insert>
-	<select id="getCollection" resultMap="articleMap">
-		select b.* from cms_favaritte a left join cms_article b on a.article_id = b.id where a.user_id =${value};
+	<!-- 展示当前用户的收藏记录 -->
+	<select id="myCollection" resultMap="articleMap">
+		select b.*,a.id cid,a.created created2 from cms_favorite a left join cms_article b on a.text = b.id where a.user_id = ${value} order by a.created desc
 	</select>
+	<!-- 收藏功能 -->
+	<insert id="favorite">
+		insert into cms_favorite values (0,#{id},#{url},#{userId},now())
+	</insert>
+	<!-- 根据id删除收藏记录 -->
+	<delete id="delColle">
+		delete from  cms_favorite where id = ${value}
+	</delete>
+	
 </mapper>

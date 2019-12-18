@@ -132,7 +132,7 @@ function publish(){
 			success:function(obj){
 				if(obj){
 					alert("发布成功!")
-					$('#center').load("/user/myarticlelist");
+					$('#content').load("/user/myarticles");
 				}else{
 					alert("发布失败")
 				}

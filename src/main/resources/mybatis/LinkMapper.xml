@@ -3,9 +3,9 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wangke.mapper.LinkMapper">
-	<select id="list" resultType="link">
+	<!-- <select id="list" resultType="link">
 		select * from cms_link
-	</select>
+	</select> -->
 	<insert id="add">
 		INSERT INTO cms_link (url,name,created)  VALUES(#{url},#{name},now())
 	</insert>

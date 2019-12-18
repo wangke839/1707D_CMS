@@ -14,4 +14,7 @@ public interface IndexService {
 
 	List getImgArticle(int i);
 
+
+	PageInfo findByTitle(Integer pageNum, String key);
+
 }

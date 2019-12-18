@@ -57,7 +57,7 @@
 			  <option value="-1">请选择</option>
 			  <c:forEach items="${channel}" var="channel">
 			  	<c:choose>
-			  		<c:when test="${channel.id==article.channel_id}">
+			  		<c:when test="${channel.id==article.channelId}">
 			  			<option value="${channel.id}" selected>${channel.name}</option>
 			  		</c:when>
 			  		<c:otherwise>
@@ -105,7 +105,7 @@ function changeChannel(){
 				   // 追加
 				   $("#category").append("<option value='0'>请选择</option>")
 				   for ( var index in data.data) {
-					   if(data.data[index].id == '${article.category_id}' ){
+					   if(data.data[index].id == '${article.categoryId}' ){
 					   	  $("#category").append("<option value='"+ data.data[index].id +"' selected>"+data.data[index].name+"</option>");
 					   }else{
 						  $("#category").append("<option value='"+ data.data[index].id +"'>"+data.data[index].name+"</option>");
@@ -146,9 +146,9 @@ function update(){
 			success:function(obj){
 				if(obj){
 					alert("修改发布成功!")
-					$('#center').load("/user/myarticlelist");
+					$('#content').load("/user/myarticles");
 				}else{
-					alert("修改发布失败")
+					alert("修改发布失败");
 				}
 				
 			}

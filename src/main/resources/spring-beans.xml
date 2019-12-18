@@ -9,7 +9,17 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-
+	<!-- 加载redis配置文件 -->
+	<import resource="redis.xml"/>
+	
+	<!-- 加载kafka监听配置文件 -->
+	<import resource="consumer.xml"/>
+	
+	<!-- 加载kafka生产者配置文件 -->
+	<import resource="producer.xml"/>
+	
+	<!-- 加载es配置文件 -->
+	<import resource="es.xml"/>
 
 	<!-- 1、注解扫描器 -->
 	<!-- todo -->

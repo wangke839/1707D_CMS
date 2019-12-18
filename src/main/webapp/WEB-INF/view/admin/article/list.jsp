@@ -123,9 +123,10 @@
 				function(data){
 				if(data.result==1){
 					alert("审核操作成功");
-					$('#articleDetailModal').modal('hide');
-					// 刷新列表数据
-					$("#content").load("/admin/articles?page=${pageInfo.pageNum}");
+					$('#articleDetailModal').on('hidden.bs.modal', function () {
+							// 刷新列表数据
+							$("#a").load("/admin/articles?page=${pageInfo.pageNum}");
+						})
 				}else{
 					alert(data.errorMsg);
 				}
@@ -141,10 +142,11 @@
 		$.post("/admin/setArticleHot",{id:globalArticleId,status:status},
 				function(data){
 				if(data.result==1){
-					alert("审核操作成功");
-					$('#articleDetailModal').modal('hide');
-					// 刷新列表数据
-					$("#content").load("/admin/articles?page=${pageInfo.pageNum}");
+					alert("设成热门成功");
+					$('#articleDetailModal').on('hidden.bs.modal', function () {
+						// 刷新列表数据
+						$("#a").load("/admin/articles?page=${pageInfo.pageNum}");
+					})
 				}else{
 					alert(data.errorMsg);
 				}
@@ -171,7 +173,6 @@
 					" 分类：" + data.data.cname2);
 				
 				$('#articleDetailModal').modal('show');
-				//$("#content").load("/admin/articles?page=${pageInfo.pageNum}");
 			}else{
 				alert(data.errorMsg);
 			}
@@ -190,12 +191,6 @@
 		},"json")
 	}
 	
-	$('#articleDetailModal').on('hidden.bs.modal', function () {
-		  // 执行一些动作...
-		//alert("关闭") 
-		//$("#content").load("/admin/articles?page=${pageInfo.pageNum}");
-		  
-	})
 		
 </script>
 

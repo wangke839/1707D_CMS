@@ -40,9 +40,9 @@ public class AmdinController {
 	@Autowired
 	private UserServicde us;
 	@Autowired
-	private LinkService linkService;
-	@Autowired
 	private ArticleService articleService;
+	@Autowired
+	private LinkService linkService;
 	/**
 	 * 
 	    * @Title: list
@@ -161,7 +161,7 @@ public class AmdinController {
 	@RequestMapping("applyArticle")
 	@ResponseBody
 	public ResultInformation applyArticle(int id,int status) throws CmcException {
-		//判断文章是否崔仔
+		//判断文章是否存在
 		Article article = articleService.checkExist(id);
 		CmsAssert.AssertTrue(article!=null, "该文章已经不存在");
 		//审核文章
@@ -197,40 +197,14 @@ public class AmdinController {
 			return new ResultInformation(2,"处理失败",null);
 		}
 	}
-	@RequestMapping("link")
-	public String list(HttpServletRequest request, 
-			@RequestParam(defaultValue="1") int pageNum) {
-		
-		PageInfo info = linkService.list(pageNum);
-		request.setAttribute("info", info);
-		return "admin/link/list";
-		
-		
-	}
-	@GetMapping("linkAdd")
-	public String add(HttpServletRequest request) {
-		request.setAttribute("link", new Link());
-		return "admin/link/add";	 
-	}
 	
-	@PostMapping("linkAdd")
-	public String add(HttpServletRequest request,
-			@Valid  @ModelAttribute("link") Link link,
-			BindingResult result
-			) throws CmcException {
-		// 有错误 还在原来的页面
-		if(result.hasErrors()) {
-			return "admin/link/add";	
-		}
-		int result2 = linkService.add(link);
-		// 没有错误跳转到列表页面
-		return "redirect:link";
-	}
-	@PostMapping("deleteLink.do")
-	@ResponseBody
-	public ResultInformation deleteLink(HttpServletRequest request,int id) throws CmcException {
-		int result = linkService.delLink(id);
-		CmsAssert.AssertTrueHtml(result>0, "删除失败");
-		return new ResultInformation(1,"删除失败",null);
-	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

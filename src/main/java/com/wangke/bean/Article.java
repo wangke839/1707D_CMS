@@ -4,12 +4,21 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.context.annotation.ComponentScan.Filter;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /**
  * 
  * @author wk
  *
  */
+@Document(indexName="cms_article",type="article")
 public class Article implements Serializable {
 	
 	
@@ -17,26 +26,47 @@ public class Article implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 6320126833474686896L;
-	
+	@Id
 	private Integer id               ;
 	// 文章标题
+	@Field(index=true,store=true,analyzer="ik_smart",searchAnalyzer="ik_smart",type=FieldType.text)
 	private String title            ;
 	// 文章内容
+	@Field(index=true,store=true,analyzer="ik_smart",searchAnalyzer="ik_smart",type=FieldType.text)
 	private String content          ;
 	//标题图片的url 地址
 	private String picture          ;
 	// 频道
 	private Integer channelId       ;
+	@JsonIgnore
 	private Channel channel       ;
 	
 	private String categoryId      ;
 	// 文章的分类
+	@JsonIgnore
 	private Category category;
 	
-	
+	@JsonIgnore
 	private Integer userId          ;
+	@JsonIgnore
 	private User user          ;
 	
+	private int cid;
+	private Date created2;
+	
+	
+	public Date getCreated2() {
+		return created2;
+	}
+	public void setCreated2(Date created2) {
+		this.created2 = created2;
+	}
+	public int getCid() {
+		return cid;
+	}
+	public void setCid(int cid) {
+		this.cid = cid;
+	}
 	// 点击数量
 	private int  hits             ;
 	// 是否为热门文章 1 是  0 否
@@ -55,8 +85,10 @@ public class Article implements Serializable {
 	// 评论的数量
 	private int commentCnt       ;
 	//文章类型
-	private ArticleType articleType      ;
+	@JsonIgnore
+	private ArticleType articleType =ArticleType.HTML     ;
 	// 该文章的所有的图片
+	@JsonIgnore
 	private List<Image> imgList;
 	
 	private String cname1;
@@ -211,13 +243,32 @@ public class Article implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	public Article() {
+		super();
+	}
+	
+	@Override
+	public String toString() {
+		return "Article [id=" + id + ", title=" + title + ", content="
+				+ content + ", picture=" + picture + ", channelId=" + channelId
+				+ ", channel=" + channel + ", categoryId=" + categoryId
+				+ ", category=" + category + ", userId=" + userId + ", user="
+				+ user + ", cid=" + cid + ", created2=" + created2 + ", hits="
+				+ hits + ", hot=" + hot + ", status=" + status + ", deleted="
+				+ deleted + ", created=" + created + ", updated=" + updated
+				+ ", commentCnt=" + commentCnt + ", articleType=" + articleType
+				+ ", imgList=" + imgList + ", cname1=" + cname1 + ", cname2="
+				+ cname2 + ", username=" + username + ", channel_id="
+				+ channel_id + ", category_id=" + category_id + "]";
+	}
 	public Article(Integer id, String title, String content, String picture,
 			Integer channelId, Channel channel, String categoryId,
-			Category category, Integer userId, User user, int hits, int hot,
-			int status, int deleted, Date created, Date updated,
-			int commentCnt, ArticleType articleType,
-			List<com.wangke.bean.Image> imgList, String cname1, String cname2,
-			String username, Integer channel_id, String category_id) {
+			Category category, Integer userId, User user, int cid,
+			Date created2, int hits, int hot, int status, int deleted,
+			Date created, Date updated, int commentCnt,
+			ArticleType articleType, List<Image> imgList, String cname1,
+			String cname2, String username, Integer channel_id,
+			String category_id) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -229,6 +280,8 @@ public class Article implements Serializable {
 		this.category = category;
 		this.userId = userId;
 		this.user = user;
+		this.cid = cid;
+		this.created2 = created2;
 		this.hits = hits;
 		this.hot = hot;
 		this.status = status;
@@ -243,23 +296,6 @@ public class Article implements Serializable {
 		this.username = username;
 		this.channel_id = channel_id;
 		this.category_id = category_id;
-	}
-	public Article() {
-		super();
-	}
-	@Override
-	public String toString() {
-		return "Article [id=" + id + ", title=" + title + ", content="
-				+ content + ", picture=" + picture + ", channelId=" + channelId
-				+ ", channel=" + channel + ", categoryId=" + categoryId
-				+ ", category=" + category + ", userId=" + userId + ", user="
-				+ user + ", hits=" + hits + ", hot=" + hot + ", status="
-				+ status + ", deleted=" + deleted + ", created=" + created
-				+ ", updated=" + updated + ", commentCnt=" + commentCnt
-				+ ", articleType=" + articleType + ", imgList=" + imgList
-				+ ", cname1=" + cname1 + ", cname2=" + cname2 + ", username="
-				+ username + ", channel_id=" + channel_id + ", category_id="
-				+ category_id + "]";
 	}
 	@Override
 	public int hashCode() {

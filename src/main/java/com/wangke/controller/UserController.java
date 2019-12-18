@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.PageInfo;
 import com.google.gson.Gson;
 import com.wangke.bean.Article;
@@ -35,6 +37,7 @@ import com.wangke.service.ArticleService;
 import com.wangke.service.CategoryService;
 import com.wangke.service.ChannelService;
 import com.wangke.service.FavariteService;
+import com.wangke.service.FavoriteServicel;
 import com.wangke.service.IndexService;
 import com.wangke.service.UserServicde;
 
@@ -44,8 +47,6 @@ public class UserController {
 	@Autowired
 	private IndexService is;
 	@Autowired
-	private FavariteService favariteService;
-	@Autowired
 	private UserServicde us;
 	@Autowired
 	private ChannelService channelService;
@@ -53,6 +54,10 @@ public class UserController {
 	private ArticleService articleService;
 	@Autowired
 	private CategoryService categoryService;
+	@Autowired
+	private FavoriteServicel favoriteServicel;
+	@Autowired
+	private KafkaTemplate<String, String> kafkaTemplate;
 	
 	/**
 	 * 
@@ -125,7 +130,7 @@ public class UserController {
 	
 	}
 	
-	
+//	去登陆
 	@RequestMapping("tologin")
 	public String tologin (User user,HttpServletRequest request) throws CmcException{
 		/*User logUser = us.login(user);
@@ -136,6 +141,7 @@ public class UserController {
 		return "user/login";
 		
 	}
+//	登录
 @RequestMapping("login.do")
 public String login (User user,HttpServletRequest request) throws CmcException{
 	User logUser = us.login(user);
@@ -180,7 +186,7 @@ public String login (User user,HttpServletRequest request) throws CmcException{
 	@RequestMapping("loginOut")
 	public String loginOut(HttpServletRequest request)  {
 		request.getSession().removeAttribute(CONTAINT.USER_KEY);
-		return "user/login";
+		return "redirect:tologin";
 	}
 	/**
 	 * 
@@ -201,6 +207,8 @@ public String login (User user,HttpServletRequest request) throws CmcException{
 		CmsAssert.AssertTrue(article!=null, "该文章已经不存在");
 		//审核文章
 		int result = articleService.delArticle(id);
+//		通过kafka发送修改命令
+		kafkaTemplate.send("articles", "del="+id);
 		if(result>0) {
 			return new ResultInformation(1,"处理成功",null);
 		}else {
@@ -247,6 +255,10 @@ public String login (User user,HttpServletRequest request) throws CmcException{
 		article.setUserId(loginUser.getId());
 		
 		int result = articleService.addArticle(article);
+//		把要添加的文章对象转成json
+		String jsonString = JSON.toJSONString(article);
+//		通过kafka发送添加命令
+		kafkaTemplate.send("articles","add="+jsonString);
 		if(result>0) {
 			return new ResultInformation(1, "处理成功",null);
 		}else {
@@ -313,6 +325,10 @@ public String login (User user,HttpServletRequest request) throws CmcException{
 		}
 		
 		int result = articleService.updateArticle(article);
+//		把要添加的文章对象转成json
+		String jsonString = JSON.toJSONString(article);
+//		通过kafka发送修改命令
+		kafkaTemplate.send("articles", "update="+jsonString);
 		if(result>0) {
 			return new ResultInformation(1, "处理成功",null);
 		}else {
@@ -363,13 +379,37 @@ public String login (User user,HttpServletRequest request) throws CmcException{
 		}
 		
 	}
+	/**
+	 * 
+	    * @Title: collection
+	    * @Description: 展示当前用户的收藏记录
+	    * @param @param request
+	    * @param @return    参数
+	    * @return String    返回类型
+	    * @throws
+	 */
 	@RequestMapping("myCollection")
-	public String myCollection(HttpServletRequest request){
+	public String collection(HttpServletRequest request){
+//		得到当前用户
 		User loginUser = (User) request.getSession().getAttribute(CONTAINT.USER_KEY);
-		List colle = favariteService.getCollection(loginUser.getId());
+		List colle  =  favoriteServicel.myCollection(loginUser.getId());
 		request.setAttribute("colle", colle);
 		return "user/favarite";
-		
-		
 	}
+	/**
+	 * 
+	    * @Title: delColle
+	    * @Description: 根据id删除收藏记录
+	    * @param @param id
+	    * @param @return    参数
+	    * @return ResultInformation    返回类型
+	    * @throws
+	 */
+	@RequestMapping("delColle")
+	@ResponseBody
+	public ResultInformation delColle(int id){
+		int result = favoriteServicel.delColle(id);
+		return new ResultInformation(result,"删除收藏失败",null);
+	}
+
 }

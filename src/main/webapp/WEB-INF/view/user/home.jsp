@@ -34,7 +34,7 @@
 			 <li class="list-group-item list-group-item-success" data="/user/myarticles">我的文章</li>
 			 <li class="list-group-item list-group-item-info" data="/user/postArticle">发布文章</li>
 			 <li class="list-group-item list-group-item-info" data="/user/postImg">发布图片</li>
-			 <li class="list-group-item list-group-item-info" data="/user/myCollection">我的收藏</li>
+			 <li class="list-group-item list-group-item-info" data="/user/myCollection">我的收藏夹</li>
 			 <li class="list-group-item list-group-item-info">我的评论</li>
 			 <li class="list-group-item list-group-item-info">投票管理</li>
 			 <li class="list-group-item list-group-item-info">个人设置</li>
@@ -64,6 +64,11 @@
 	$("#content").load(url);
 	
 </script>
+<script type="text/javascript">
+		function showArticle(articleId){
+			window.open("/article/showdetail?id="+articleId)
+		}
+	</script>
 
 </body>
 </html>

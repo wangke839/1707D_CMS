@@ -23,6 +23,7 @@ import com.wangke.comm.ResultInformation;
 import com.wangke.service.ArticleService;
 import com.wangke.service.CategoryService;
 import com.wangke.service.FavariteService;
+import com.wangke.service.FavoriteServicel;
 
 @RequestMapping("article")
 @Controller
@@ -31,13 +32,13 @@ public class ArticleController {
 	@Autowired
 	private ArticleService articleService;
 	@Autowired
-	private FavariteService favariteService;
-	@Autowired
 	private CategoryService categoryService;
+	@Autowired
+	private FavoriteServicel favoriteServicel;
 	/**
 	 * 
 	    * @Title: showDetail
-	    * @Description: TODO(这里用一句话描述这个方法的作用)
+	    * @Description: 展示文章
 	    * @param @param m
 	    * @param @param id
 	    * @param @return    参数
@@ -61,6 +62,15 @@ public class ArticleController {
 		}
 		
 	}
+	/**
+	 * 
+	    * @Title: getCategoryByChannel
+	    * @Description: 通过频道获取文章
+	    * @param @param chnId
+	    * @param @return    参数
+	    * @return ResultInformation    返回类型
+	    * @throws
+	 */
 	@RequestMapping("getCategoryByChannel")
 	@ResponseBody
 	public ResultInformation getCategoryByChannel(int chnId) {
@@ -69,13 +79,24 @@ public class ArticleController {
 		return new ResultInformation(1, "",  categories);
 		
 	}
+	/**\
+	 * 
+	    * @Title: favorite
+	    * @Description: 收藏文章
+	    * @param @param request
+	    * @param @param id
+	    * @param @return    参数
+	    * @return ResultInformation    返回类型
+	    * @throws
+	 */
 	@RequestMapping("favarite")
 	@ResponseBody
-	private ResultInformation favarite(HttpServletRequest request,int id) throws CmcException{
+	public ResultInformation favorite(HttpServletRequest request,int id){
 		User loginUser = (User) request.getSession().getAttribute(CONTAINT.USER_KEY);
-		CmsAssert.AssertTrue(loginUser!=null, "亲，您尚未登录！！");
-		int result = favariteService.favarite(id,loginUser.getId());
-		CmsAssert.AssertTrue(result>0, "很遗憾，收藏失败！！");
-		return new ResultInformation(1,"恭喜，收藏成功",null);
+		CmsAssert.AssertTrue(loginUser != null, "用户未登录");
+		int result = favoriteServicel.favorite(id,loginUser.getId(),request.getRequestURI());
+		return new ResultInformation(result,"收藏失败",null);
 	}
+	
+	
 }

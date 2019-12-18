@@ -3,13 +3,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <table class="table">
-  <caption>我的收藏</caption>
+  <caption>我的收藏夹</caption>
   <thead>
     <tr>
       <th>id</th>
       <th width="50%">标题</th>
-      <th>频道</th>
-      <th>分类</th>
       <th>发布日期</th>
       <th>操作</th>
       </tr>
@@ -17,13 +15,11 @@
   <tbody>
     <c:forEach items="${colle}" var="article">
 	    <tr class="active">
-	       <td>${article.id}</td>
-	       <td>${article.title}</td>
-	       <td>${article.channel.name}</td>
-	       <td>${article.category.name}</td>
-	       <td><fmt:formatDate value="${article.created}" pattern="yyyy-MM-dd"/></td>
+	       <td>${article.cid}</td>
+	       <td><a href="javascript:showArticle(${article.id})">${article.title}</a></td>
+	       <td><fmt:formatDate value="${article.created2}" pattern="yyyy-MM-dd-HH:mm:ss"/></td>
 	      <td>
-	      	<input type="button" onclick="delColle(${article.id})" value="删除"  class="btn-danger"/>
+	      	<input type="button" onclick="delColle(${article.cid})" value="删除"  class="btn-danger"/>
 	      </td></tr>
    	</c:forEach>
   </tbody>
@@ -53,7 +49,7 @@
 		$.post("/user/delColle",{id:articleId},function(data){
 			if(data.result==1){
 				alert("删除成功");
-				$("#content").load("/user/myarticles?page=${pageInfo.pageNum}");
+				$("#content").load("/user/myCollection");
 			}else{
 				alert(data.errorMsg);
 			}

@@ -22,7 +22,7 @@
 			&nbsp;&nbsp;&nbsp;&nbsp; 频道：${article.channel.name} 
 			&nbsp;&nbsp;&nbsp;&nbsp; 分类：${article.category.name} &nbsp;&nbsp;&nbsp;&nbsp;
 			
-			<a href="javascript:favarite(${article.id})">收藏</a>
+			<a href="javascript:favorite(${article.id})">收藏</a>
 		</h5>
 		<div>
 			${article.content}
@@ -40,7 +40,7 @@
 		</div>
 	</div>
 <script type="text/javascript">
-	function favarite(articleId){
+	function favorite(articleId){
 		$.post(
 			"favarite",
 			{id:articleId},
