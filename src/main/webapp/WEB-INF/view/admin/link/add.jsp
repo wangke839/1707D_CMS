@@ -12,9 +12,14 @@
 		//$("#form").submit();
 		$.post('/admin/linkAdd',$("#form").serialize(),
 				function(html){
-					$(".page-content").html(html);
-			
-			}
+					/* $(".page-content").html(html); */
+					if(html.getResult()==1){
+						alert("添加成功");
+						$(".page-content").html("/admin/link");
+					}
+					
+				},
+				"json"
 			);
 		
 	}

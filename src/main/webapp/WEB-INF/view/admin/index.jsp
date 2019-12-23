@@ -5,21 +5,21 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/resource/assets/css/font-awesome.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
  <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/resource/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" href="/resource/bootstrap/css/bootstrap.min.css">
 <script type="text/javascript" src="/resource/js/jquery-3.2.1.js"></script>
 <script type="text/javascript" src="/resource/bootstrap/js/bootstrap.js"></script>
+
+<link rel="stylesheet" href="/resource/assets/css/font-awesome.css" />
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/resource/bootstrap/css/bootstrap.min.css">
 
 <link rel="stylesheet" href="/resource/assets/css/ace-fonts.css" />
 <link rel="stylesheet" href="/resource/assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
 <script src="/resource/assets/js/ace-extra.js"></script>
-
-<!-- 轮播图 -->
-<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <!-- 导航条 -->

@@ -72,7 +72,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			WHERE deleted=0  AND user_id=#{value}
 			ORDER BY created DESC
 	</select>
-	<insert id="addArticle">
+	<insert id="addArticle" useGeneratedKeys="true" keyProperty="id">
 		<!-- INSERT INTO cms_article(title,content,picture,channel_id,
 		category_id,user_id,hits,hot,status,deleted,
 		created,updated,commentCnt,articleType)
@@ -95,5 +95,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		UPDATE cms_article SET title=#{title},content=#{content},
 			picture=#{picture},channel_id=#{channelId},
 			category_id=#{categoryId},status=0,updated=now() WHERE id=#{id}
+	</update>
+	<update id="updateHits">
+		UPDATE cms_article SET hits=${hits} WHERE id=#{id}
 	</update>
 </mapper>

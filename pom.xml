@@ -130,7 +130,7 @@
 		<!-- 自己工具类 -->
   	<dependency>
   		<groupId>com.wangke.utils</groupId>
-  		<artifactId>wangke_utils</artifactId>
+  		<artifactId>wangke_util</artifactId>
   		<version>0.0.1-SNAPSHOT</version>
   	</dependency>
   	

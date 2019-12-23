@@ -29,7 +29,8 @@
 <div style="background-color: pink;height: 700px;">
 <div class="container" >
 	<div class="row" >
-		<div class="col-md-3" >
+		<div class="col-md-3" style="float: left 40px;">
+		<br><br><br><br><br><br><br><br>
 			<ul class="list-group homemenu">
 			 <li class="list-group-item list-group-item-success" data="/user/myarticles">我的文章</li>
 			 <li class="list-group-item list-group-item-info" data="/user/postArticle">发布文章</li>
@@ -40,6 +41,7 @@
 			 <li class="list-group-item list-group-item-info">个人设置</li>
 			</ul>
 		</div>
+		<br><br><br><br><br><br>
 		<div class="col-md-9" id="content">
 		
 				<div id="kindEditor" style="display: none">

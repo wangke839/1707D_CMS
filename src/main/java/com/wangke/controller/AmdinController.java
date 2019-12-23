@@ -80,6 +80,22 @@ public class AmdinController {
 	}
 	/**
 	 * 
+	    * @Title: loginOut
+	    * @Description: 登出
+	    * @param @param request
+	    * @param @param user
+	    * @param @return
+	    * @param @throws CmcException    参数
+	    * @return String    返回类型
+	    * @throws
+	 */
+	@RequestMapping("loginOut")
+	public String loginOut(HttpServletRequest request)  {
+		request.getSession().removeAttribute(CONTAINT.USER_KEY);
+		return "redirect:tologin";
+	}
+	/**
+	 * 
 	    * @Title: lockuser
 	    * @Description: 用户解封与禁用
 	    * @param @return    参数
@@ -196,6 +212,26 @@ public class AmdinController {
 		}else {
 			return new ResultInformation(2,"处理失败",null);
 		}
+	}
+	@RequestMapping("link")
+	public String link(Model m,@RequestParam(defaultValue="1") Integer pageNum){
+		PageInfo list = linkService.list(pageNum);
+		m.addAttribute("info", list);
+		return "admin/link/list";
+	}
+	@GetMapping("linkAdd")
+	public String linkAdd(Model m){
+		Link link = new Link();
+		m.addAttribute("link", link);
+		return "admin/link/add";
+	}
+	@PostMapping("linkAdd")
+	@ResponseBody
+	public ResultInformation linkAdd(Link link){
+		int add = linkService.add(link);
+		ResultInformation set = null;
+		set = new ResultInformation(add, "添加失败", null);
+		return set;
 	}
 	
 	

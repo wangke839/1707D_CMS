@@ -31,5 +31,7 @@ public interface ArticleService {
 
 	Article getById2(int id);
 
+	void updateHits(Article article);
+
 
 }

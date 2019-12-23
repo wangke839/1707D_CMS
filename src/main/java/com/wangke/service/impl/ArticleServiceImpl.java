@@ -95,4 +95,10 @@ public class ArticleServiceImpl implements ArticleService{
 		return aticleMapper.getById2(id);
 	}
 
+	@Override
+	public void updateHits(Article article) {
+		// TODO Auto-generated method stub
+		aticleMapper.updateHits(article);
+	}
+
 }

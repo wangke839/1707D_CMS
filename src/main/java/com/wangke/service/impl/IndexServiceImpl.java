@@ -78,10 +78,10 @@ public class IndexServiceImpl implements IndexService{
 	public PageInfo findByTitle(Integer pageNum,String key) {
 		// TODO Auto-generated method stub
 //		List<Article> list = articleRsp.findByTitle(key,null);
-		AggregatedPage<?> selectObjects = HLUtils.selectObjects(elasticsearchTemplate, Article.class, pageNum, 3, new String[]{"title"}, "id", key);
+		AggregatedPage<?> selectObjects = com.wangke_utils.HLUtils.selectObjects(elasticsearchTemplate, Article.class, pageNum, 3, new String[]{"title"}, "id", key);
 		List<Article> content = (List<Article>) selectObjects.getContent();
-		System.out.println(content);
-		PageInfo info = new PageInfo(content);
+//		System.out.println(content);
+		PageInfo info = new PageInfo<>(content);
 		info.setPageNum(pageNum);
 		info.setPageSize(CONTAINT.PAGE_SIZE);
 		int total = (int) selectObjects.getTotalElements();

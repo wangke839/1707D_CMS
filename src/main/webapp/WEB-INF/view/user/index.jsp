@@ -77,13 +77,13 @@
 						<div class="container-fluid " style="background:pink">
 	<div class="container"  style=" overflow-y:auto; overflow-x:auto; width:1000px; height:500px;" >
 		<div class="row">
-			<div class="col-md-2" style="min-height:200px ">
+			<div class="col-md-2" style="min-height:200px;position: fixed;left: 0px;top: 140px;" >
 			
 			<ul class="list-group">
-			<li class="list-group-item active"><a><font color="red">热门文章</font></a></li>
+			<li class="list-group-item active"><a><font color="red"><center>热门文章</center></font></a></li>
 			<c:forEach items="${list}" var="s">
 			
-			  <li class="list-group-item" data="/channel?chnId=${s.id}"><a href="/user/channel?chnId=${s.id}">${s.name}</a></li>
+			  <li class="list-group-item" data="/channel?chnId=${s.id}"><a href="/user/channel?chnId=${s.id}"><center> ${s.name}</center></a></li>
 			</c:forEach>
 			</ul>
 
@@ -155,7 +155,7 @@
 						<c:forEach items="${info2.list}" var="article">
 						<div class=row >
 							 <hr align="left" style="width:100%">
-							<div class="col-md-2"><img height="50px" width="50px" src="/resource/images/${article.picture}"></div>
+							<div class="col-md-2"><img height="50px" width="50px" src="d:/pic/${article.picture}"></div>
 							<div class="col-md-10">
 								<a href="javascript:showArticle(${article.id})">${article.title}</a>
 								<br>
@@ -184,13 +184,13 @@
 							</div>
 					</div>
 					
-					<div class="col-md-2" style="min-height:300px">
+			<div class="col-md-2" style="min-height:300px;position: fixed;left: 940px;top: 140px;">
 				<div class="panel panel-default">
 				
 				<div class="panel-footer">图片文章</div>
 				<div class="panel-body">
-					<c:forEach items="${imgArticles}" var="article" varStatus="index">
-							${index.index+1} . <a href="javascript:showArticle(${article.id})">${article.title}</a>
+					<c:forEach items="${imgArticles}" var="imgarticle" varStatus="index">
+							${index.index+1} . <a href="javascript:showArticle(${imgarticle.id})">${imgarticle.title}</a>
 							<br/>
 					</c:forEach>
 				</div>
@@ -211,21 +211,23 @@
 		</div>
 	</div>
   </div>
-	
+  <img alt="" src="/resource/images/武田玲奈.jpg" style="height: 300px;width: 200px;position: fixed;top:130px;left: 1259px;">
 </div>
 						
 			
 			<!-- 尾部 -->
-			<div class="footer">
+			<div class="footer" style="background-color: red;">
 				<div class="footer-inner">
 					<!-- #section:basics/footer -->
 					<div class="footer-content">
-						<span>
-							
-						</span>
+					<span>
+					<c:forEach items="${list2}" var="l">
+						<a href="${l.url }">${l.name}</a>
+					</c:forEach>
+					</span><br>
 						<span class="bigger-120">
-							<span class="blue bolder">KE</span>
-							阿珂6666 © 2019-2020
+							<span class="blue bolder" >KE</span>
+							<font color="red">阿珂6666 © 2019-2020</font>
 						</span>
 
 						&nbsp; &nbsp;
@@ -299,60 +301,5 @@
 }
 flySnow(); 
 </script>
- 
- 
- <script>
-//面向对象版
- /* let flySnow = (function(){
-	function Fn(){
-		this.snow = function(d){
-			let vw = $(document).innerWidth(),
-				vh = $(window).height();
-			d = d || 5000 + 6000 * Math.random();
-			d = d === "fast" ? 4000 + 4000 * Math.random() : d === "slow" ? 7000 + 8000 * Math.random() : d;
-			this.element = document.createElement("div");
-			this.startLeft = vw * Math.random();
-			this.endLeft = vw * Math.random();
-			this.endTop = vh;
-			this.startOpa = 0.8 + 0.2 * Math.random();
-			this.endOpa = 0.2 + 0.2 * Math.random();
-			this.startSize = 6 + 25 * Math.random();
-			this.endSize = 5 + 18 * Math.random();
-			this.duration = d ;
-			this.style = (function(){
-					let arr = ['❄','❉','❅','❆','✻','✼','❇','❈','❊','✥','✺'];
-					return arr[Math.floor(Math.random() * arr.length)];
-			})();
-		}
-		this.fly = function(s, d){
-			setInterval(()=>{
-				let snow = new this.snow(d);
-				snow.element.innerText = snow.style;
-				snow.element.style.cssText = `position: absolute;
-											  color: #fff;
-											  left: ${snow.startLeft}px;
-											  top: -22px;
-											  opacity: ${snow.startOpa};
-											  font-size: ${snow.startSize}px;
-											  transition: ${snow.duration}ms;`;
-				$("body").append(snow.element);
-				setTimeout(()=>{
-					snow.element.style.cssText += `left: ${snow.endLeft}px;
-												  top: ${snow.endTop - 20}px;
-												  opacity: ${snow.endOpa};
-												  font-size: ${snow.endSize}px;
-												  transform: rotate(720deg);`;
-					setTimeout(()=>{
-						snow.element.remove()
-						snow = null;
-					}, snow.duration)
-				}, 0)
-			}, s)
-		}
-	}
-	return new Fn();
-}());
-flySnow.fly(30, "slow");  */
-</script> 
 </body>
 </html>

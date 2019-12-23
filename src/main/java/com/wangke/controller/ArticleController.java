@@ -1,10 +1,13 @@
 package com.wangke.controller;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -35,6 +38,10 @@ public class ArticleController {
 	private CategoryService categoryService;
 	@Autowired
 	private FavoriteServicel favoriteServicel;
+	@Autowired
+	private RedisTemplate redisTemplate;
+	@Autowired
+	private ThreadPoolTaskExecutor executor;
 	/**
 	 * 
 	    * @Title: showDetail
@@ -46,10 +53,24 @@ public class ArticleController {
 	    * @throws
 	 */
 	@RequestMapping("showdetail")
-	public String showDetail(Model m,Integer id) {
+	public String showDetail(Model m,Integer id,HttpServletRequest request) {
 		
 		Article  article = articleService.getById(id); 
-		System.out.println("======================"+article);
+//		System.out.println("======================"+article);
+		String key = "Hits_"+request.getRemoteAddr()+"_"+id;
+		String str = (String) redisTemplate.opsForValue().get(key);
+		if(str == null){
+			executor.execute(new Runnable() {
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					article.setHits(article.getHits()+1);
+					articleService.updateHits(article);
+					System.err.println("点击量加1");
+					redisTemplate.opsForValue().set(key, "",5,TimeUnit.MINUTES);
+				}
+			});
+		}
 		m.addAttribute("article",article);
 		if(article.getArticleType()==ArticleType.HTML){
 			return "article/detail";
